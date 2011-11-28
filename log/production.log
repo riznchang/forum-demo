@@ -87,3 +87,20 @@ Started GET "/" for 192.168.8.250 at 2011-11-25 15:09:04 +0800
 Rendered common/_user_nav.erb (1.7ms)
 Rendered boards/index.html.erb within layouts/application (11.1ms)
 Completed 200 OK in 173ms (Views: 36.9ms | ActiveRecord: 19.1ms)
+
+
+Started GET "/" for 192.168.8.250 at 2011-11-28 16:21:24 +0800
+  Processing by BoardsController#index as HTML
+Rendered boards/index.html.erb within layouts/application (84.6ms)
+Completed 500 Internal Server Error in 247ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such table: users: SELECT  "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1):
+    22: 
+    23: <br />
+    24: 
+    25: <% if current_user && current_user.is_admin? %>
+    26:   <%= link_to 'A-New Board', new_admin_board_path %>
+    27: <% end %>
+  app/views/boards/index.html.erb:25:in `_app_views_boards_index_html_erb__198057290_80965360__270099344'
+  app/controllers/boards_controller.rb:7:in `index'
+
