@@ -69,7 +69,7 @@ class Admin::BoardsController < ApplicationController
     @board.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_boards_url) }
+      format.html { redirect_to(admin_boards_path) }
       format.xml  { head :ok }
     end
   end
