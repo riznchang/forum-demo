@@ -5,19 +5,25 @@
   <%= @board.name %>
 </p>
 
-<h1>Listing posts</h1>
+<h1>Listing posts - Total <%= @board.posts.size %> posts </h1>
 <table>
   <tr>
+     <th>ID</th>
      <th>Title</th>
      <th>Content</th>
+     <th>Create At</th>
+     <th>Update At</th>
      <th></th>
      <th></th>
      <th></th>
   </tr>
 <% @posts.each do |post| %>
   <tr>
+    <td><%= post.id %></td>
     <td><%= post.title %></td>
     <td><%= post.content %></td>
+    <td><%= l(post.created_at, :format => :short)%></td>
+    <td><%= l(post.updated_at, :format => :short)%></td>
     <td><%= link_to 'Show', board_post_path(@board,post) %></td>
 	<% if current_user && post.user == current_user %>
     	    <td><%= link_to 'Edit', edit_board_post_path(@board,post) %></td>
@@ -31,7 +37,7 @@
   </tr>
 <% end %>
 </table>
-
+  <%= will_paginate(@posts) %>
 <br />
 
 
