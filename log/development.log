@@ -1,27 +1,27 @@
-  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
-  [1m[36mSQL (584.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
-  [1m[36mSQL (482.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (215.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (174.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
   [1m[35mSQL (0.2ms)[0m   SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
 Migrating to CreateBoards (20111124053247)
   [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "boards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
-  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111124053247')
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111124053247')
 Migrating to CreatePosts (20111124053329)
-  [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
   [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111124053329')
 Migrating to AddBordIdToPost (20111124060250)
-  [1m[36mSQL (0.6ms)[0m  [1mALTER TABLE "posts" ADD "bord_id" integer[0m
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "posts" ADD "bord_id" integer[0m
   [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111124060250')
 Migrating to AddBoardIdToPost (20111125052337)
   [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "posts" ADD "board_id" integer[0m
@@ -29,27 +29,27 @@ Migrating to AddBoardIdToPost (20111125052337)
 Migrating to DeviseCreateUsers (20111125064946)
   [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
   [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
-  [1m[36mSQL (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mSQL (37.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
   [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
   [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
   [1m[35mSQL (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
-  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111125064946')[0m
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111125064946')[0m
 Migrating to AddUserIdToPost (20111125074253)
   [1m[35mSQL (0.5ms)[0m  ALTER TABLE "posts" ADD "user_id" integer
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111125074253')[0m
 Migrating to AddIsAdminToUser (20111128015636)
-  [1m[35mSQL (0.7ms)[0m  ALTER TABLE "users" ADD "is_admin" boolean DEFAULT 'f'
+  [1m[35mSQL (0.6ms)[0m  ALTER TABLE "users" ADD "is_admin" boolean DEFAULT 'f'
   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111128015636')[0m
 Migrating to AddPostsCountToBoard (20111129014215)
-  [1m[35mSQL (0.7ms)[0m  ALTER TABLE "boards" ADD "posts_count" integer DEFAULT 0
-  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111129014215')[0m
+  [1m[35mSQL (0.5ms)[0m  ALTER TABLE "boards" ADD "posts_count" integer DEFAULT 0
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111129014215')[0m
 Migrating to AddExcerptImageToPost (20111129052549)
   [1m[35mSQL (0.6ms)[0m  ALTER TABLE "posts" ADD "excerpt_image_file_name" varchar(255)
   [1m[36mSQL (0.3ms)[0m  [1mALTER TABLE "posts" ADD "excerpt_image_content_type" varchar(255)[0m
-  [1m[35mSQL (0.1ms)[0m  ALTER TABLE "posts" ADD "excerpt_image_file_size" integer
-  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "posts" ADD "excerpt_image_updated_at" datetime[0m
+  [1m[35mSQL (0.3ms)[0m  ALTER TABLE "posts" ADD "excerpt_image_file_size" integer
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "posts" ADD "excerpt_image_updated_at" datetime[0m
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111129052549')
-  [1m[36mSQL (0.5ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[36mSQL (0.6ms)[0m  [1mselect sqlite_version(*)[0m
   [1m[35mSQL (0.2ms)[0m   SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
@@ -57,845 +57,112 @@ Migrating to AddExcerptImageToPost (20111129052549)
   [1m[35mSQL (0.2ms)[0m   SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("boards")[0m
-  [1m[35mSQL (0.4ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("boards")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
   [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
   [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
   [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
-
-
-Started GET "/" for 192.168.8.128 at 2011-11-29 15:06:49 +0800
-  Processing by BoardsController#index as HTML
-  [1m[36mBoard Load (1.5ms)[0m  [1mSELECT "boards".* FROM "boards"[0m
-Rendered common/_user_nav.erb (1.7ms)
-Rendered boards/index.html.erb within layouts/application (20.9ms)
-Completed 200 OK in 36ms (Views: 28.9ms | ActiveRecord: 1.5ms)
-
-
-Started GET "/users/sign_in" for 192.168.8.128 at 2011-11-29 15:06:53 +0800
-  Processing by Devise::SessionsController#new as HTML
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/devise-1.5.1/app/views/devise/shared/_links.erb (2.5ms)
-Rendered common/_user_nav.erb (1.6ms)
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/devise-1.5.1/app/views/devise/sessions/new.html.erb within layouts/application (15.9ms)
-Completed 200 OK in 100ms (Views: 21.5ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/users/sign_up" for 192.168.8.128 at 2011-11-29 15:06:55 +0800
-  Processing by Devise::RegistrationsController#new as HTML
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/devise-1.5.1/app/views/devise/shared/_links.erb (2.2ms)
-Rendered common/_user_nav.erb (1.7ms)
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/devise-1.5.1/app/views/devise/registrations/new.html.erb within layouts/application (29.7ms)
-Completed 200 OK in 56ms (Views: 36.3ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/users" for 192.168.8.128 at 2011-11-29 15:07:01 +0800
-  Processing by Devise::RegistrationsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "user"=>{"email"=>"rizn@azion.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
-  [1m[35mSQL (0.3ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'rizn@azion.com') LIMIT 1
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/devise-1.5.1/app/views/devise/shared/_links.erb (3.3ms)
-Rendered common/_user_nav.erb (1.9ms)
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/devise-1.5.1/app/views/devise/registrations/new.html.erb within layouts/application (19.4ms)
-Completed 200 OK in 211ms (Views: 27.9ms | ActiveRecord: 0.3ms)
-
-
-Started POST "/users" for 192.168.8.128 at 2011-11-29 15:07:23 +0800
-  Processing by Devise::RegistrationsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "user"=>{"email"=>"rizn@azion.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
-  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'rizn@azion.com') LIMIT 1[0m
-  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at", "is_admin") VALUES ('rizn@azion.com', '$2a$10$V2Wz7BSVDsXyb.9amIXzrOYOkOsAVMMNgYbTRpnK0XqY.Qu6N6JgW', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '2011-11-29 07:07:23.905968', '2011-11-29 07:07:23.905968', 'f')
-  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2011-11-29 07:07:24.135548', "current_sign_in_at" = '2011-11-29 07:07:24.135548', "last_sign_in_ip" = '192.168.8.128', "current_sign_in_ip" = '192.168.8.128', "sign_in_count" = 1, "updated_at" = '2011-11-29 07:07:24.136062' WHERE "users"."id" = 1[0m
-Redirected to http://forum-demo/boards/1/posts/1/edit
-Completed 302 Found in 671ms
-
-
-Started GET "/boards/1/posts/1/edit" for 192.168.8.128 at 2011-11-29 15:07:24 +0800
-  Processing by PostsController#edit as HTML
-  Parameters: {"board_id"=>"1", "id"=>"1"}
-  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Completed 404 Not Found in 91ms
-
-ActiveRecord::RecordNotFound (Couldn't find Board with ID=1):
-  app/controllers/posts_controller.rb:36:in `edit'
-
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.5ms)
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.1ms)
-
-
-Started GET "/" for 192.168.8.128 at 2011-11-29 15:07:52 +0800
-  Processing by BoardsController#index as HTML
-  [1m[35mBoard Load (0.2ms)[0m  SELECT "boards".* FROM "boards"
-  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.4ms)
-Rendered boards/index.html.erb within layouts/application (49.8ms)
-Completed 200 OK in 62ms (Views: 54.0ms | ActiveRecord: 1.4ms)
-  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
   [1m[35mSQL (0.3ms)[0m   SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "users" SET "is_admin" = 't', "updated_at" = '2011-11-29 07:12:24.843617' WHERE "users"."id" = 1[0m
-DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/rizn/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111)
-
-
-Started GET "/" for 192.168.8.128 at 2011-11-29 15:21:10 +0800
-  Processing by BoardsController#index as HTML
-  [1m[36mBoard Load (2.6ms)[0m  [1mSELECT "boards".* FROM "boards"[0m
-  [1m[35mSQL (0.4ms)[0m   SELECT name
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'admin@example.org') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.8ms)
-Rendered boards/index.html.erb within layouts/application (65.1ms)
-Completed 200 OK in 109ms (Views: 91.1ms | ActiveRecord: 3.9ms)
-
-
-Started GET "/" for 192.168.8.128 at 2011-11-29 15:22:49 +0800
-  Processing by BoardsController#index as HTML
-  [1m[35mBoard Load (1.1ms)[0m  SELECT "boards".* FROM "boards"
-  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.4ms)
-Rendered boards/index.html.erb within layouts/application (84.7ms)
-Completed 200 OK in 100ms (Views: 91.3ms | ActiveRecord: 2.2ms)
-
-
-Started GET "/" for 192.168.8.128 at 2011-11-29 15:26:50 +0800
-  Processing by BoardsController#index as HTML
-  [1m[35mBoard Load (0.6ms)[0m  SELECT "boards".* FROM "boards"
-  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.6ms)
-Rendered boards/index.html.erb within layouts/application (86.4ms)
-Completed 200 OK in 99ms (Views: 91.7ms | ActiveRecord: 1.6ms)
-
-
-Started GET "/admin/boards/new" for 192.168.8.128 at 2011-11-29 15:29:04 +0800
-  Processing by Admin::BoardsController#new as HTML
-  [1m[35mUser Load (2.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered admin/boards/_form.html.erb (35.3ms)
-Rendered common/_user_nav.erb (1.6ms)
-Rendered admin/boards/new.html.erb within layouts/admin (53.0ms)
-Completed 200 OK in 153ms (Views: 61.2ms | ActiveRecord: 2.0ms)
-
-
-Started POST "/admin/boards" for 192.168.8.128 at 2011-11-29 15:30:19 +0800
-  Processing by Admin::BoardsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "board"=>{"name"=>"Board01"}, "commit"=>"Create Board"}
-  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mAREL (0.6ms)[0m  INSERT INTO "boards" ("name", "created_at", "updated_at", "posts_count") VALUES ('Board01', '2011-11-29 07:30:19.838833', '2011-11-29 07:30:19.838833', 0)
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 379ms
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 15:30:20 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
+[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at", "is_admin") VALUES ('admin@example.org', '$2a$10$.0T7X2UCf6PY.9Gh7gf6oemS/fvH2DZhr9QXjBFlrvfYFVkFgCN6u', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '2011-11-29 09:47:44.851698', '2011-11-29 09:47:44.851698', 't')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'user1@example.org') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at", "is_admin") VALUES ('user1@example.org', '$2a$10$g1HNg27kR0JXJByywy8Boub9c9fLERIHzKQxKmPlJdPGgOB6WJpW2', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '2011-11-29 09:47:45.170781', '2011-11-29 09:47:45.170781', 'f')
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "boards" ("name", "created_at", "updated_at", "posts_count") VALUES ('System Announcement', '2011-11-29 09:47:45.385309', '2011-11-29 09:47:45.385309', 0)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "posts" ("title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES ('First Post', 'This is a demo post', '2011-11-29 09:47:45.580791', '2011-11-29 09:47:45.580791', NULL, 1, 1, NULL, NULL, NULL, NULL)
   [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0
-  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.3ms)
-Rendered boards/show.html.erb within layouts/application (90.2ms)
-Completed 200 OK in 155ms (Views: 101.6ms | ActiveRecord: 1.6ms)
-
-
-Started GET "/boards/1/posts/new" for 192.168.8.128 at 2011-11-29 15:48:24 +0800
-  Processing by PostsController#new as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Rendered posts/_form.html.erb (5.3ms)
-Rendered common/_user_nav.erb (2.0ms)
-Rendered posts/new.html.erb within layouts/application (15.2ms)
-Completed 200 OK in 174ms (Views: 47.0ms | ActiveRecord: 1.5ms)
-
-
-Started POST "/boards/1/posts" for 192.168.8.128 at 2011-11-29 15:48:43 +0800
-  Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "post"=>{"title"=>"Post01", "content"=>"12121212", "excerpt_image"=>#<ActionDispatch::Http::UploadedFile:0xaf42a18 @original_filename="Desert.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[excerpt_image]\"; filename=\"Desert.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20111129-1288-6niuc6>>}, "commit"=>"Create Post", "board_id"=>"1"}
-  [1m[35mUser Load (2.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1c29538.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1c29538.jpg[0]' -resize "300x300>" '/tmp/stream20111129-1288-1c2953820111129-1288-1prfvvz'
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1c29538.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1c29538.jpg[0]' -resize "100x100>" '/tmp/stream20111129-1288-1c2953820111129-1288-184sfxf'
-  [1m[35mAREL (0.4ms)[0m  INSERT INTO "posts" ("title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES ('Post01', '12121212', '2011-11-29 07:48:45.241493', '2011-11-29 07:48:45.241493', NULL, 1, 1, 'Desert.jpg', 'image/jpeg', 845941, '2011-11-29 07:48:43.956950')
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mAREL (0.2ms)[0m  UPDATE "boards" SET "posts_count" = COALESCE("posts_count", 0) + 1 WHERE "boards"."id" = 1
-[paperclip] Saving attachments.
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/1/original/Desert.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/1/medium/Desert.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/1/thumb/Desert.jpg
-Redirected to http://forum-demo/boards/1/posts/1
-Completed 302 Found in 1923ms
-
-
-Started GET "/boards/1/posts/1" for 192.168.8.128 at 2011-11-29 15:48:45 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"1"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 AND ("posts".board_id = 1) LIMIT 1
-  [1m[36mUser Load (39.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (1.9ms)
-Rendered posts/show.html.erb within layouts/application (116.4ms)
-Completed 200 OK in 218ms (Views: 95.7ms | ActiveRecord: 40.6ms)
-
-
-Started GET "/boards/1/posts/1/edit" for 192.168.8.128 at 2011-11-29 15:48:48 +0800
-  Processing by PostsController#edit as HTML
-  Parameters: {"board_id"=>"1", "id"=>"1"}
-  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mBoard Load (0.4ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (1.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 AND ("posts".user_id = 1) LIMIT 1[0m
-Rendered posts/_form.html.erb (5.0ms)
-Rendered common/_user_nav.erb (1.7ms)
-Rendered posts/edit.html.erb within layouts/application (45.9ms)
-Completed 200 OK in 184ms (Views: 69.1ms | ActiveRecord: 2.7ms)
-
-
-Started GET "/boards/1/posts" for 192.168.8.128 at 2011-11-29 15:49:03 +0800
-  Processing by PostsController#index as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[35mBoard Load (0.2ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 59ms
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 15:49:03 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (1.0ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0
-  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (2.4ms)
-Rendered boards/show.html.erb within layouts/application (127.3ms)
-Completed 200 OK in 165ms (Views: 130.9ms | ActiveRecord: 5.5ms)
-
-
-Started GET "/boards/1/posts/new" for 192.168.8.128 at 2011-11-29 15:53:21 +0800
-  Processing by PostsController#new as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mBoard Load (3.1ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-Rendered posts/_form.html.erb (4.6ms)
-Rendered common/_user_nav.erb (1.7ms)
-Rendered posts/new.html.erb within layouts/application (15.1ms)
-Completed 200 OK in 150ms (Views: 20.4ms | ActiveRecord: 3.9ms)
-
-
-Started POST "/boards/1/posts" for 192.168.8.128 at 2011-11-29 15:53:36 +0800
-  Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "post"=>{"title"=>"Post02", "content"=>"wewewewew", "excerpt_image"=>#<ActionDispatch::Http::UploadedFile:0xb04e2cc @original_filename="Jellyfish.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[excerpt_image]\"; filename=\"Jellyfish.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20111129-1288-jbh7ia>>}, "commit"=>"Create Post", "board_id"=>"1"}
-  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mBoard Load (0.3ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1vsgti4.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1vsgti4.jpg[0]' -resize "300x300>" '/tmp/stream20111129-1288-1vsgti420111129-1288-1nk0a76'
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1vsgti4.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1vsgti4.jpg[0]' -resize "100x100>" '/tmp/stream20111129-1288-1vsgti420111129-1288-1uryrd7'
-  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES ('Post02', 'wewewewew', '2011-11-29 07:53:37.110142', '2011-11-29 07:53:37.110142', NULL, 1, 1, 'Jellyfish.jpg', 'image/jpeg', 775702, '2011-11-29 07:53:36.600956')[0m
-  [1m[35mBoard Load (0.2ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mAREL (0.3ms)[0m  [1mUPDATE "boards" SET "posts_count" = COALESCE("posts_count", 0) + 1 WHERE "boards"."id" = 1[0m
-[paperclip] Saving attachments.
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/2/original/Jellyfish.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/2/medium/Jellyfish.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/2/thumb/Jellyfish.jpg
-Redirected to http://forum-demo/boards/1/posts/2
-Completed 302 Found in 1145ms
-
-
-Started GET "/boards/1/posts/2" for 192.168.8.128 at 2011-11-29 15:53:37 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"2"}
-  [1m[35mBoard Load (0.4ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 AND ("posts".board_id = 1) LIMIT 1[0m
-  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.4ms)
-Rendered posts/show.html.erb within layouts/application (116.3ms)
-Completed 200 OK in 205ms (Views: 120.5ms | ActiveRecord: 1.9ms)
-
-
-Started GET "/boards/1/posts" for 192.168.8.128 at 2011-11-29 15:53:41 +0800
-  Processing by PostsController#index as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[35mBoard Load (0.4ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 22ms
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 15:53:41 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mBoard Load (0.4ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0
-  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (2.0ms)
-Rendered boards/show.html.erb within layouts/application (118.8ms)
-Completed 200 OK in 153ms (Views: 122.3ms | ActiveRecord: 4.6ms)
-
-
-Started GET "/boards/1/posts/new" for 192.168.8.128 at 2011-11-29 15:59:24 +0800
-  Processing by PostsController#new as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Rendered posts/_form.html.erb (4.3ms)
-Rendered common/_user_nav.erb (1.4ms)
-Rendered posts/new.html.erb within layouts/application (13.6ms)
-Completed 200 OK in 151ms (Views: 19.2ms | ActiveRecord: 1.1ms)
-
-
-Started POST "/boards/1/posts" for 192.168.8.128 at 2011-11-29 15:59:49 +0800
-  Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "post"=>{"title"=>"Post03", "content"=>"Ruby on Rails Self Study", "excerpt_image"=>#<ActionDispatch::Http::UploadedFile:0xb04d228 @original_filename="Tulips.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[excerpt_image]\"; filename=\"Tulips.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20111129-1288-17qssz8>>}, "commit"=>"Create Post", "board_id"=>"1"}
-  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1hjr9bg.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1hjr9bg.jpg[0]' -resize "300x300>" '/tmp/stream20111129-1288-1hjr9bg20111129-1288-cdd77c'
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1hjr9bg.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1hjr9bg.jpg[0]' -resize "100x100>" '/tmp/stream20111129-1288-1hjr9bg20111129-1288-18fjfhn'
-  [1m[35mAREL (0.5ms)[0m  INSERT INTO "posts" ("title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES ('Post03', 'Ruby on Rails Self Study', '2011-11-29 07:59:50.346954', '2011-11-29 07:59:50.346954', NULL, 1, 1, 'Tulips.jpg', 'image/jpeg', 620888, '2011-11-29 07:59:49.887190')
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
   [1m[35mAREL (0.1ms)[0m  UPDATE "boards" SET "posts_count" = COALESCE("posts_count", 0) + 1 WHERE "boards"."id" = 1
 [paperclip] Saving attachments.
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/3/original/Tulips.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/3/medium/Tulips.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/3/thumb/Tulips.jpg
-Redirected to http://forum-demo/boards/1/posts/3
-Completed 302 Found in 1011ms
 
 
-Started GET "/boards/1/posts/3" for 192.168.8.128 at 2011-11-29 15:59:50 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"3"}
-  [1m[36mBoard Load (0.4ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 AND ("posts".board_id = 1) LIMIT 1
-  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (1.9ms)
-Rendered posts/show.html.erb within layouts/application (120.2ms)
-Completed 200 OK in 167ms (Views: 126.4ms | ActiveRecord: 1.7ms)
-
-
-Started GET "/boards/1/posts" for 192.168.8.128 at 2011-11-29 15:59:52 +0800
-  Processing by PostsController#index as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 22ms
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 15:59:52 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[35mBoard Load (0.3ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (1.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0[0m
-  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.6ms)
-Rendered boards/show.html.erb within layouts/application (128.6ms)
-Completed 200 OK in 164ms (Views: 132.9ms | ActiveRecord: 4.4ms)
-
-
-Started GET "/boards/1/posts/new" for 192.168.8.128 at 2011-11-29 16:00:01 +0800
-  Processing by PostsController#new as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Rendered posts/_form.html.erb (4.6ms)
-Rendered common/_user_nav.erb (1.4ms)
-Rendered posts/new.html.erb within layouts/application (14.4ms)
-Completed 200 OK in 152ms (Views: 19.8ms | ActiveRecord: 0.9ms)
-
-
-Started POST "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:00:12 +0800
-  Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "post"=>{"title"=>"Post0201", "content"=>"Ruby on Rails Self StudyRuby on Rails Self StudyRuby on Rails Self Study", "excerpt_image"=>#<ActionDispatch::Http::UploadedFile:0xb108b40 @original_filename="Tulips.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[excerpt_image]\"; filename=\"Tulips.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20111129-1288-1aa51z7>>}, "commit"=>"Create Post", "board_id"=>"1"}
-  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1kig2v4.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1kig2v4.jpg[0]' -resize "300x300>" '/tmp/stream20111129-1288-1kig2v420111129-1288-1knfzwq'
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1kig2v4.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1kig2v4.jpg[0]' -resize "100x100>" '/tmp/stream20111129-1288-1kig2v420111129-1288-14du2da'
-  [1m[35mAREL (0.6ms)[0m  INSERT INTO "posts" ("title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES ('Post0201', 'Ruby on Rails Self StudyRuby on Rails Self StudyRuby on Rails Self Study', '2011-11-29 08:00:13.099896', '2011-11-29 08:00:13.099896', NULL, 1, 1, 'Tulips.jpg', 'image/jpeg', 620888, '2011-11-29 08:00:12.590159')
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mAREL (0.3ms)[0m  UPDATE "boards" SET "posts_count" = COALESCE("posts_count", 0) + 1 WHERE "boards"."id" = 1
-[paperclip] Saving attachments.
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/4/original/Tulips.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/4/medium/Tulips.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/4/thumb/Tulips.jpg
-Redirected to http://forum-demo/boards/1/posts/4
-Completed 302 Found in 1309ms
-
-
-Started GET "/boards/1/posts/4" for 192.168.8.128 at 2011-11-29 16:00:13 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"4"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (2.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 4 AND ("posts".board_id = 1) LIMIT 1
-  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Started GET "/" for 192.168.12.116 at 2011-11-29 17:48:04 +0800
+  Processing by BoardsController#index as HTML
+  [1m[35mBoard Load (0.6ms)[0m  SELECT "boards".* FROM "boards"
+  [1m[36mUser Load (2.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
 Rendered common/_user_nav.erb (1.5ms)
-Rendered posts/show.html.erb within layouts/application (74.7ms)
-Completed 200 OK in 163ms (Views: 79.3ms | ActiveRecord: 3.6ms)
+Rendered boards/index.html.erb within layouts/application (103.6ms)
+Completed 200 OK in 116ms (Views: 107.4ms | ActiveRecord: 2.8ms)
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mBoard Last ID (0.2ms)[0m  SELECT id FROM "boards" ORDER BY id DESC
+  [1m[36mPost Last ID (0.2ms)[0m  [1mSELECT id FROM "posts" ORDER BY id DESC[0m
 
 
-Started GET "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:00:15 +0800
-  Processing by PostsController#index as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[36mBoard Load (0.4ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 21ms
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 16:00:15 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[35mBoard Load (0.3ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (2.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0[0m
-  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (1.6ms)
-Rendered boards/show.html.erb within layouts/application (132.8ms)
-Completed 200 OK in 169ms (Views: 135.1ms | ActiveRecord: 6.3ms)
-
-
-Started GET "/boards/1/posts/new" for 192.168.8.128 at 2011-11-29 16:00:34 +0800
-  Processing by PostsController#new as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[36mUser Load (2.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mBoard Load (0.3ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-Rendered posts/_form.html.erb (4.5ms)
-Rendered common/_user_nav.erb (1.1ms)
-Rendered posts/new.html.erb within layouts/application (13.3ms)
-Completed 200 OK in 141ms (Views: 17.9ms | ActiveRecord: 2.4ms)
-
-
-Started POST "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:00:41 +0800
-  Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "post"=>{"title"=>"Post07", "content"=>"Ruby on Rails Self StudyRuby on Rails Self StudyRuby on Rails Self Study"}, "commit"=>"Create Post", "board_id"=>"1"}
-  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mBoard Load (0.3ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES ('Post07', 'Ruby on Rails Self StudyRuby on Rails Self StudyRuby on Rails Self Study', '2011-11-29 08:00:41.722139', '2011-11-29 08:00:41.722139', NULL, 1, 1, NULL, NULL, NULL, NULL)[0m
-  [1m[35mBoard Load (0.2ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "boards" SET "posts_count" = COALESCE("posts_count", 0) + 1 WHERE "boards"."id" = 1[0m
-[paperclip] Saving attachments.
-Redirected to http://forum-demo/boards/1/posts/5
-Completed 302 Found in 438ms
-
-
-Started GET "/boards/1/posts/5" for 192.168.8.128 at 2011-11-29 16:00:42 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"5"}
-  [1m[35mBoard Load (0.3ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (1.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 5 AND ("posts".board_id = 1) LIMIT 1[0m
-  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (2.0ms)
-Rendered posts/show.html.erb within layouts/application (113.5ms)
-Completed 200 OK in 162ms (Views: 118.1ms | ActiveRecord: 3.4ms)
-
-
-Started GET "/excerpt_images/medium/missing.png" for 192.168.8.128 at 2011-11-29 16:00:42 +0800
-
-ActionController::RoutingError (No route matches "/excerpt_images/medium/missing.png"):
-  
-
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
-
-
-Started GET "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:00:44 +0800
-  Processing by PostsController#index as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[35mBoard Load (0.2ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 62ms
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 16:00:44 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mBoard Load (0.8ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (3.1ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0
-  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 1)[0m
-  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (2.3ms)
-Rendered boards/show.html.erb within layouts/application (141.5ms)
-Completed 200 OK in 177ms (Views: 142.8ms | ActiveRecord: 7.5ms)
-
-
-Started GET "/boards/1/posts/new" for 192.168.8.128 at 2011-11-29 16:00:47 +0800
-  Processing by PostsController#new as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Rendered posts/_form.html.erb (4.6ms)
-Rendered common/_user_nav.erb (2.6ms)
-Rendered posts/new.html.erb within layouts/application (15.9ms)
-Completed 200 OK in 159ms (Views: 21.1ms | ActiveRecord: 1.0ms)
-
-
-Started POST "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:00:59 +0800
-  Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "post"=>{"title"=>"Post0201", "content"=>"Ruby on Rails Self Study", "excerpt_image"=>#<ActionDispatch::Http::UploadedFile:0xafbab44 @original_filename="Koala.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[excerpt_image]\"; filename=\"Koala.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20111129-1288-1rxmj1b>>}, "commit"=>"Create Post", "board_id"=>"1"}
-  [1m[35mUser Load (1.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.4ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1pxm4t4.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1pxm4t4.jpg[0]' -resize "300x300>" '/tmp/stream20111129-1288-1pxm4t420111129-1288-1n6hxd8'
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1pxm4t4.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1pxm4t4.jpg[0]' -resize "100x100>" '/tmp/stream20111129-1288-1pxm4t420111129-1288-czfvd8'
-  [1m[35mAREL (0.4ms)[0m  INSERT INTO "posts" ("title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES ('Post0201', 'Ruby on Rails Self Study', '2011-11-29 08:01:00.447609', '2011-11-29 08:01:00.447609', NULL, 1, 1, 'Koala.jpg', 'image/jpeg', 780831, '2011-11-29 08:00:59.837905')
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mAREL (0.2ms)[0m  UPDATE "boards" SET "posts_count" = COALESCE("posts_count", 0) + 1 WHERE "boards"."id" = 1
-[paperclip] Saving attachments.
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/6/original/Koala.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/6/medium/Koala.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/6/thumb/Koala.jpg
-Redirected to http://forum-demo/boards/1/posts/6
-Completed 302 Found in 1362ms
-
-
-Started GET "/boards/1/posts/6" for 192.168.8.128 at 2011-11-29 16:01:00 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"6"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 AND ("posts".board_id = 1) LIMIT 1
-  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (1.6ms)
-Rendered posts/show.html.erb within layouts/application (119.6ms)
-Completed 200 OK in 167ms (Views: 123.8ms | ActiveRecord: 2.0ms)
-
-
-Started GET "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:01:03 +0800
-  Processing by PostsController#index as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 21ms
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 16:01:03 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[35mBoard Load (0.2ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (4.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0[0m
-  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 1)
-  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (1.6ms)
-Rendered boards/show.html.erb within layouts/application (144.4ms)
-Completed 200 OK in 221ms (Views: 144.8ms | ActiveRecord: 8.4ms)
-
-
-Started GET "/boards/1?page=2" for 192.168.8.128 at 2011-11-29 16:01:22 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"page"=>"2", "id"=>"1"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 5
-  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Started GET "/" for 192.168.12.116 at 2011-11-29 17:48:34 +0800
+  Processing by BoardsController#index as HTML
+  [1m[35mBoard Load (0.4ms)[0m  SELECT "boards".* FROM "boards"
 Rendered common/_user_nav.erb (1.5ms)
-Rendered boards/show.html.erb within layouts/application (133.8ms)
-Completed 200 OK in 169ms (Views: 137.4ms | ActiveRecord: 1.9ms)
+Rendered boards/index.html.erb within layouts/application (29.2ms)
+Completed 200 OK in 42ms (Views: 34.6ms | ActiveRecord: 0.4ms)
 
 
-Started GET "/boards/1?page=1" for 192.168.8.128 at 2011-11-29 16:01:24 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"page"=>"1", "id"=>"1"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (2.5ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0
-  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 1)[0m
-  [1m[35mUser Load (1.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.5ms)
-Rendered boards/show.html.erb within layouts/application (141.5ms)
-Completed 200 OK in 181ms (Views: 143.9ms | ActiveRecord: 4.5ms)
-
-
-Started GET "/boards/1/posts/new" for 192.168.8.128 at 2011-11-29 16:01:26 +0800
-  Processing by PostsController#new as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Rendered posts/_form.html.erb (5.0ms)
-Rendered common/_user_nav.erb (1.4ms)
-Rendered posts/new.html.erb within layouts/application (15.2ms)
-Completed 200 OK in 158ms (Views: 20.8ms | ActiveRecord: 1.4ms)
-
-
-Started POST "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:01:34 +0800
-  Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "post"=>{"title"=>"Post09", "content"=>"Ruby on Rails Self StudyRuby on Rails Self Study"}, "commit"=>"Create Post", "board_id"=>"1"}
-  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.1ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES ('Post09', 'Ruby on Rails Self StudyRuby on Rails Self Study', '2011-11-29 08:01:34.619539', '2011-11-29 08:01:34.619539', NULL, 1, 1, NULL, NULL, NULL, NULL)
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mAREL (0.2ms)[0m  UPDATE "boards" SET "posts_count" = COALESCE("posts_count", 0) + 1 WHERE "boards"."id" = 1
-[paperclip] Saving attachments.
-Redirected to http://forum-demo/boards/1/posts/7
-Completed 302 Found in 364ms
-
-
-Started GET "/boards/1/posts/7" for 192.168.8.128 at 2011-11-29 16:01:34 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"7"}
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 7 AND ("posts".board_id = 1) LIMIT 1
-  [1m[36mUser Load (1.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (2.5ms)
-Rendered posts/show.html.erb within layouts/application (114.1ms)
-Completed 200 OK in 161ms (Views: 118.2ms | ActiveRecord: 3.2ms)
-
-
-Started GET "/excerpt_images/medium/missing.png" for 192.168.8.128 at 2011-11-29 16:01:35 +0800
-
-ActionController::RoutingError (No route matches "/excerpt_images/medium/missing.png"):
-  
-
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
-
-
-Started GET "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:01:36 +0800
-  Processing by PostsController#index as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 62ms
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 16:01:37 +0800
+Started GET "/boards/1" for 192.168.12.116 at 2011-11-29 17:48:37 +0800
   Processing by BoardsController#show as HTML
   Parameters: {"id"=>"1"}
-  [1m[35mBoard Load (0.4ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (3.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0[0m
-  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 1)
-  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (1.6ms)
-Rendered boards/show.html.erb within layouts/application (143.2ms)
-Completed 200 OK in 178ms (Views: 143.1ms | ActiveRecord: 7.2ms)
-
-
-Started GET "/boards/1?page=2" for 192.168.8.128 at 2011-11-29 16:02:24 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"page"=>"2", "id"=>"1"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (1.9ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 5
-  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (2.7ms)
-Rendered boards/show.html.erb within layouts/application (127.4ms)
-Completed 200 OK in 162ms (Views: 129.8ms | ActiveRecord: 3.3ms)
-
-
-Started GET "/boards/1/posts/new" for 192.168.8.128 at 2011-11-29 16:02:27 +0800
-  Processing by PostsController#new as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[35mUser Load (1.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
   [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Rendered posts/_form.html.erb (49.5ms)
+  [1m[35mPost Load (1.7ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0
+Rendered common/_user_nav.erb (1.5ms)
+Rendered boards/show.html.erb within layouts/application (89.3ms)
+Completed 200 OK in 122ms (Views: 93.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/sign_in" for 192.168.12.116 at 2011-11-29 17:48:43 +0800
+  Processing by Devise::SessionsController#new as HTML
+Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/devise-1.5.1/app/views/devise/shared/_links.erb (3.1ms)
 Rendered common/_user_nav.erb (1.7ms)
-Rendered posts/new.html.erb within layouts/application (59.6ms)
-Completed 200 OK in 161ms (Views: 64.6ms | ActiveRecord: 1.9ms)
+Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/devise-1.5.1/app/views/devise/sessions/new.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 54ms (Views: 21.2ms | ActiveRecord: 0.0ms)
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mBoard Last ID (0.1ms)[0m  SELECT id FROM "boards" ORDER BY id DESC
+  [1m[36mPost Last ID (0.2ms)[0m  [1mSELECT id FROM "posts" ORDER BY id DESC[0m
+  [1m[35mBoard Populate (188.7ms)[0m  INSERT INTO "boards" ("id", "name", "created_at", "updated_at", "posts_count") VALUES (2, 'Minus', '2011-11-29 09:50:22.836578', '2011-11-29 09:50:22.836606', NULL);INSERT INTO "boards" ("id", "name", "created_at", "updated_at", "posts_count") VALUES (3, 'Magni', '2011-11-29 09:50:22.916123', '2011-11-29 09:50:22.916127', NULL);INSERT INTO "boards" ("id", "name", "created_at", "updated_at", "posts_count") VALUES (4, 'Non', '2011-11-29 09:50:22.931786', '2011-11-29 09:50:22.931804', NULL);INSERT INTO "boards" ("id", "name", "created_at", "updated_at", "posts_count") VALUES (5, 'Unde', '2011-11-29 09:50:22.946690', '2011-11-29 09:50:22.946694', NULL);INSERT INTO "boards" ("id", "name", "created_at", "updated_at", "posts_count") VALUES (6, 'Atque', '2011-11-29 09:50:22.961200', '2011-11-29 09:50:22.961229', NULL);INSERT INTO "boards" ("id", "name", "created_at", "updated_at", "posts_count") VALUES (7, 'Aut', '2011-11-29 09:50:22.976854', '2011-11-29 09:50:22.976881', NULL);INSERT INTO "boards" ("id", "name", "created_at", "updated_at", "posts_count") VALUES (8, 'Sit', '2011-11-29 09:50:22.992567', '2011-11-29 09:50:22.992581', NULL);INSERT INTO "boards" ("id", "name", "created_at", "updated_at", "posts_count") VALUES (9, 'Veniam', '2011-11-29 09:50:23.007724', '2011-11-29 09:50:23.007727', NULL);INSERT INTO "boards" ("id", "name", "created_at", "updated_at", "posts_count") VALUES (10, 'Inventore', '2011-11-29 09:50:23.024820', '2011-11-29 09:50:23.024823', NULL);INSERT INTO "boards" ("id", "name", "created_at", "updated_at", "posts_count") VALUES (11, 'Aliquid', '2011-11-29 09:50:23.040902', '2011-11-29 09:50:23.040905', NULL)
+  [1m[36mPost Populate (365.6ms)[0m  [1mINSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (2, 'Sint', 'Darwin Dach Cartwright, Goodwin and Waelchi evalyn.windler@runolfonhintz.info 1-286-942-7054 x838 6526 Ruecker Streets Kossview PR 38085-8446 Et et velit non ad occaecati. Sint libero perspiciatis neque culpa molestias et in. Voluptatem veritatis nostrum distinctio qui magnam repellat. Sit aperiam animi quo culpa et. Iste in quae in earum. Earum non voluptatem et. Alias ea rerum ut nesciunt eaque. Est distinctio sapiente ipsa natus explicabo.', '2011-11-29 09:50:22.841141', '2011-11-29 09:50:22.841146', NULL, 2, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (3, 'Nihil', 'Emilio Connelly Flatley and Sons nelle@mills.info (239)652-4661 x3168 8880 Yazmin Terrace Keeleyside PW 35204-6405 In repellat a temporibus commodi voluptate dolorem rerum. Voluptate illo enim doloremque exercitationem. Soluta id pariatur facilis saepe nesciunt similique quos. Id omnis inventore sequi. Quas perspiciatis eum reiciendis et repellendus. Voluptas aut omnis voluptatibus quae optio. Dicta ut corporis tempore ut est. In illo et.', '2011-11-29 09:50:22.902314', '2011-11-29 09:50:22.902379', NULL, 2, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (4, 'Odio', 'Clarabelle Casper Considine-Cummerata andy.cremin@larkinmitchell.name (636)405-3657 96914 Kellie Harbors North Christianamouth AS 66347 Commodi quod architecto quos in. Quia voluptatibus cupiditate quis officia debitis recusandae. Eveniet eos rerum molestias. Exercitationem libero voluptas. Aut cum dolorum. Autem optio voluptate qui. Eum molestiae expedita aspernatur omnis libero qui.', '2011-11-29 09:50:22.904308', '2011-11-29 09:50:22.904312', NULL, 2, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (5, 'Quo', 'Raul Simonis V Swaniawski, Carroll and Sawayn orville@stiedemann.name 601-219-5431 x86554 96780 Fisher Brooks Hellerport NH 84464 Sed qui est. Natus cupiditate sit eos quasi quia omnis. Quasi nisi quidem enim ea nesciunt nihil in. Tempore est culpa eaque. Omnis quaerat corporis explicabo dolorem velit voluptates. Quod nemo doloremque sit. Consectetur vitae quos praesentium aliquam ipsum omnis necessitatibus. Placeat qui vero quibusdam ab ipsum possimus quis.', '2011-11-29 09:50:22.905478', '2011-11-29 09:50:22.905481', NULL, 2, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (6, 'A', 'Mr. Jaclyn Halvorson Jerde, Casper and Oberbrunner malachi_corwin@zemlak.net 1-241-101-5064 62434 Burnice Orchard Luettgenborough MS 99137-4294 Quia nesciunt dolore amet quam cum maxime beatae. Eos non fugiat dolor et fugit in eligendi. Deserunt quia nesciunt. Earum numquam perferendis labore praesentium. Aperiam quia eos qui cumque quibusdam sit quia. Quis molestiae exercitationem sint voluptas aut.', '2011-11-29 09:50:22.907040', '2011-11-29 09:50:22.907044', NULL, 2, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (7, 'Esse', 'Dr. Trace Stroman Gutkowski-Weber rosemary_senger@bradtke.name 1-690-124-6255 x793 2842 Chauncey Trail New Alexandrea ME 15529-8745 Omnis autem similique placeat. Placeat maiores sunt consequatur omnis cum alias. Quod quaerat commodi est et et ea non. Accusantium omnis nisi sunt. Officia laboriosam earum qui hic sint. Amet ea molestias incidunt consequatur dolores. Et sint soluta dolor sed. Aut nesciunt ut esse.', '2011-11-29 09:50:22.908591', '2011-11-29 09:50:22.908648', NULL, 2, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (8, 'Laborum', 'Nick Sanford Feil, Sporer and Mills jermey@gerlach.name (578)336-2287 x09752 47377 Connelly Stream West Max MN 61047-9322 Id doloribus facere sint ullam reprehenderit. Facere excepturi similique. Possimus nulla ut quod. Molestias expedita reprehenderit doloribus dicta corporis eos. Repudiandae molestiae pariatur. Voluptate odit molestiae quo. Eos minima corrupti sit. Vel laborum tenetur rerum voluptate est rerum.', '2011-11-29 09:50:22.910119', '2011-11-29 09:50:22.910123', NULL, 2, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (9, 'Rerum', 'Mrs. Jena Glover Pollich-Pouros charlie.schuster@deckow.org 1-249-933-9666 x7679 521 Sanford Wall Muellershire OR 51878-8531 Consectetur harum quisquam omnis molestiae. Aliquid dolorem et. Aut saepe labore blanditiis perferendis nulla consequatur sint. Nisi nulla quia cum est. Neque quis et modi sint. Expedita sint sapiente magni eius qui praesentium.', '2011-11-29 09:50:22.911655', '2011-11-29 09:50:22.911658', NULL, 2, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (10, 'Et', 'Madalyn Heidenreich Morar Group nyah@reichertmiller.com 983-231-3564 x72577 16740 Purdy Square Powlowskifurt CA 68839-9976 Cum dolor laudantium ratione et ea. Incidunt dignissimos eveniet. Dolorum molestiae exercitationem necessitatibus dolores tempora eum omnis. Sed non fugit minima. Ex asperiores temporibus. Quae est tempora earum molestiae. Voluptas nemo distinctio.', '2011-11-29 09:50:22.913052', '2011-11-29 09:50:22.913064', NULL, 2, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (11, 'Et', 'Mrs. Elda Corkery Rolfson, Pfannerstill and Yost lysanne@bruen.com 570.543.8837 5133 Altenwerth Dam Binsburgh AR 32677 Doloribus laudantium accusamus autem aut illo. Deserunt recusandae iure ut perspiciatis itaque. Ea quia qui corporis ab vero. Quia quo neque. Dolorum est recusandae. Doloremque est laborum enim fuga est recusandae repudiandae. Voluptas reiciendis dolor.', '2011-11-29 09:50:22.914534', '2011-11-29 09:50:22.914538', NULL, 2, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (12, 'Autem', 'Walton Parisian Ruecker Group gilda@jerdelehner.info (361)086-1323 x27334 4253 Shaina Via Jorditown MO 95167-9524 Ut praesentium rerum et eum quo architecto reiciendis. Sunt suscipit qui occaecati dolores. Delectus aspernatur quibusdam impedit. Inventore quas dicta quam veniam et. Minus accusamus occaecati iusto. Optio quia et in. Quos aspernatur et sint saepe architecto.', '2011-11-29 09:50:22.916215', '2011-11-29 09:50:22.916219', NULL, 3, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (13, 'Expedita', 'Mr. Lola Lakin Watsica, Ortiz and Gulgowski constance@luettgen.name (735)161-5309 x63066 598 Lind Wells O''Keefeview LA 91250 Et magni sint quia dolores reprehenderit et. Voluptatem velit amet. Hic dolores doloribus nisi et quidem occaecati. Soluta quas quia et molestias excepturi suscipit animi. Omnis quasi facere sed quibusdam accusamus nulla quo. Fugiat quo sit hic illo. Aut esse omnis velit qui quis rerum perferendis.', '2011-11-29 09:50:22.917768', '2011-11-29 09:50:22.917793', NULL, 3, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (14, 'Aut', 'Moses Larkin Jr. Torphy-Windler raleigh.stroman@oconner.com 1-577-352-7858 843 Kraig Inlet Port Caroleport TX 95246 Maiores temporibus illum quod blanditiis officiis amet at. Laborum hic sint. Voluptas quo numquam quas non. Consequatur sed modi rem laborum ut. Ea et repellat quod consequatur vel. Non iure qui. Voluptatem suscipit nam id accusamus nisi. Suscipit voluptas est ut dolores.', '2011-11-29 09:50:22.919514', '2011-11-29 09:50:22.919534', NULL, 3, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (15, 'Ipsum', 'Eloisa Koss Okuneva Inc ariel@hudson.info 638.230.0353 650 Weber Mountains Pollichfort GA 56277-5033 Rerum et accusantium est. Corrupti consequuntur ea id et laborum accusamus. Atque laborum voluptatem. Ducimus doloremque libero quasi exercitationem inventore. Aut ut et sint velit corporis. Labore voluptatem tempore voluptas necessitatibus doloribus. Porro distinctio quam culpa est. Omnis adipisci doloremque inventore et.', '2011-11-29 09:50:22.920956', '2011-11-29 09:50:22.920959', NULL, 3, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (16, 'Quo', 'Violette Gusikowski Mertz Group valentina_lowe@mayert.com 1-663-101-8655 x5395 4977 Dexter Isle Port Davidfort AA 24160 Soluta saepe est similique. Cum illum totam animi vero. Sint eveniet et consequatur. Deleniti non eveniet quia dolor nam ut quas. Distinctio accusamus eum. Placeat temporibus est et atque. Dolor assumenda porro fugiat.', '2011-11-29 09:50:22.922488', '2011-11-29 09:50:22.922491', NULL, 3, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (17, 'Distinctio', 'Dr. Darwin Hermiston Marvin, Weissnat and Schroeder keyshawn@creminwalker.com 1-138-760-7553 x8373 64686 Palma Falls East Alek HI 19953 Mollitia nihil voluptas rem veniam. Et recusandae quasi doloribus doloremque vero molestias. Sit unde quia aperiam eaque quod qui. Velit ratione aut in quos dignissimos. Rerum nihil eos dolore mollitia architecto. Quasi rerum quibusdam in qui consequuntur dolores. Cupiditate exercitationem et accusamus.', '2011-11-29 09:50:22.923951', '2011-11-29 09:50:22.923955', NULL, 3, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (18, 'In', 'Rebecca Bernier Grant, Hyatt and Nicolas brain@metzhirthe.name 759-655-0220 x84157 171 Sawayn Ranch Port Jesus NC 56286 Non quae earum. Quasi voluptas natus nesciunt aut. Aut et aut quos non natus. Ipsa expedita architecto eos autem. Alias repellat ipsam beatae. Consequatur voluptatum eum quia deserunt. Repudiandae ipsa occaecati facilis maiores eaque a. Eveniet sed consequatur nobis perferendis quas quo.', '2011-11-29 09:50:22.925373', '2011-11-29 09:50:22.925376', NULL, 3, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (19, 'Magnam', 'Kamille Kuvalis Jr. Zboncak LLC lorine@jacobson.org 117-398-7196 9501 Kuhn Curve Gutkowskiville OR 47305-4731 Neque ducimus omnis dolorem. Similique assumenda nam qui. Iste accusamus ex temporibus earum. Officia ipsam ut fugiat totam et. Et ut culpa. Vel quos quisquam quia voluptatem. Ipsam occaecati dolores nobis porro non pariatur commodi. Esse adipisci laborum recusandae.', '2011-11-29 09:50:22.926860', '2011-11-29 09:50:22.926864', NULL, 3, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (20, 'Recusandae', 'Joan Hauck Runolfsson-Harris georgianna.baumbach@schultzgulgowski.org 1-203-387-2669 x19967 213 Garrett Springs Uptonshire FL 32588 Ad voluptatem odio enim error voluptas recusandae nostrum. Est consequatur non veniam architecto. Illo architecto quisquam veniam molestiae. Ullam optio odio enim minus itaque modi. Consequuntur harum recusandae ut enim natus. Quis perspiciatis velit sint. Non dolore voluptatibus ea.', '2011-11-29 09:50:22.928338', '2011-11-29 09:50:22.928374', NULL, 3, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (21, 'Commodi', 'Enos Larkin Goldner and Sons jevon@okuneva.net 804.366.7470 x8354 47921 Marquise Circle Bodehaven MD 27155 Atque consectetur et amet et non facilis. Omnis voluptatem voluptas expedita dignissimos et doloremque velit. Sit qui nihil saepe libero doloribus. Nihil omnis ut voluptatibus. Possimus officia assumenda eaque impedit. Ut quis est. Sed quis est voluptatem unde ipsa.', '2011-11-29 09:50:22.930237', '2011-11-29 09:50:22.930260', NULL, 3, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (22, 'Sint', 'Burley Cummings Lindgren Group berenice_bruen@schultz.name 424.586.3172 4860 Lindsey Keys North Orlandport MI 84768 Veniam minima voluptas. Eaque expedita aperiam ea quam. Placeat odio dolorum consequuntur distinctio sit ut. Mollitia quibusdam cupiditate molestiae. Dolores ut fugiat quia. Aperiam saepe et. Dicta rerum id aliquam rerum sit officiis est.', '2011-11-29 09:50:22.931947', '2011-11-29 09:50:22.931961', NULL, 4, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (23, 'Laudantium', 'Savanna Bayer DVM Thiel-Kuhic brock@stehrdietrich.org (621)115-2502 x249 3870 Bayer Skyway East Heaven WA 15052 Provident officia corrupti temporibus beatae libero. Ullam voluptates consequatur ipsam eos animi labore eligendi. Ut rem incidunt error cum. Iusto temporibus aut aliquid voluptatem vitae ut culpa. Temporibus eius quaerat. Eaque ut in.', '2011-11-29 09:50:22.932843', '2011-11-29 09:50:22.932847', NULL, 4, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (24, 'Veritatis', 'Mr. Annetta Nikolaus Hilpert-Murazik ronaldo_goodwin@stroman.biz (590)000-3518 28885 Ziemann Neck Fayshire RI 63051 Illo sequi ab non culpa. Deleniti consequatur hic sint. Consectetur similique ab unde dolor sunt ducimus voluptatem. Explicabo aperiam repellendus. Id vero placeat animi. Vel saepe sed vel et. Voluptatem ab nihil necessitatibus in.', '2011-11-29 09:50:22.934216', '2011-11-29 09:50:22.934220', NULL, 4, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (25, 'Non', 'Obie Schiller O''Connell LLC breana@fay.name (551)389-9214 3631 Tara Ways Barrowston IN 25328 Quibusdam provident dolore error enim soluta ut. Unde perferendis laborum minus suscipit iure. Aut fuga quo fugit. Ut quasi omnis doloribus ipsum dolor. Cupiditate iusto tenetur. Quas eum qui distinctio delectus fuga excepturi deleniti.', '2011-11-29 09:50:22.935726', '2011-11-29 09:50:22.935729', NULL, 4, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (26, 'Molestiae', 'Demarco Osinski Rowe-Towne audie_harvey@johns.org 627-620-5517 71956 Ismael Route North Jadynstad OH 96273-2256 Sequi hic exercitationem aliquid soluta. Dolores magnam vero facere et explicabo sint. Rerum aut tenetur. Natus debitis voluptate omnis molestiae eius. Aut quia omnis est eaque. Maxime perspiciatis est qui iusto. Ea voluptas amet dolores molestias. Aut corrupti eius.', '2011-11-29 09:50:22.937018', '2011-11-29 09:50:22.937029', NULL, 4, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (27, 'Quo', 'Rory Kreiger Daniel, Grant and Donnelly kelli@romaguera.com 441-614-2504 98727 Alyson Hollow Percivaltown WA 91214-5543 Qui velit quia. Et quia qui. Repellat et deleniti rerum accusantium. Sint sit nisi iste voluptas. Dolorem non sed. Est qui eligendi corporis. Fugiat enim in ipsa quam.', '2011-11-29 09:50:22.938564', '2011-11-29 09:50:22.938568', NULL, 4, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (28, 'Nobis', 'Adolph Bernier DVM Hauck, Mann and Littel adolph@schultztowne.biz 107-989-1998 x372 659 Serena Locks North Rosalindaland NJ 73507-6855 Necessitatibus est quia. Aperiam id eligendi. Debitis natus qui vel nesciunt inventore error voluptatibus. Aliquam repellat laboriosam hic voluptas est. In qui libero dicta fuga. Voluptas ratione consequatur ad alias. Quia rerum sit nisi saepe.', '2011-11-29 09:50:22.940236', '2011-11-29 09:50:22.940267', NULL, 4, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (29, 'Ducimus', 'Orval Stiedemann Hayes, Moen and Stehr houston@marquardt.net 653-069-7875 6557 Lebsack Lake Trantowport AE 14340-3375 Voluptatibus qui incidunt. Sit in nulla ea voluptatum omnis laboriosam aut. Quis adipisci iste minus harum. Unde voluptatem perferendis sapiente pariatur minus commodi quidem. Cupiditate vel aut vel facilis. Possimus veritatis qui iste delectus ad provident. Ut et aut optio ipsum.', '2011-11-29 09:50:22.941954', '2011-11-29 09:50:22.942029', NULL, 4, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (30, 'Qui', 'Donna Gleichner Ondricka Group marion_mcdermott@schuster.name 1-538-918-5407 x79293 982 Hansen Pike Port Dannyside TX 67978 Quia et praesentium necessitatibus iste aut. Soluta sapiente expedita voluptate sed atque sequi et. Sint similique hic excepturi assumenda id quidem optio. Dolores quis voluptatem et consequatur mollitia harum officiis. Nihil impedit incidunt rerum. Quod sed praesentium in officiis repellendus sint.', '2011-11-29 09:50:22.943675', '2011-11-29 09:50:22.943692', NULL, 4, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (31, 'Consequatur', 'Mr. Consuelo Graham Langosh LLC mortimer@ledner.net 326-855-6257 11943 Ziemann Station North Judd PR 78849-9648 Tempore explicabo veniam rerum pariatur consequatur laudantium. Temporibus aut cumque blanditiis eum ipsam voluptatum a. A velit veritatis assumenda. Quasi odio ipsa. Sint eius et est. In quisquam et. Vero vitae est et beatae et. Quod inventore voluptatem maxime repudiandae ex.', '2011-11-29 09:50:22.945148', '2011-11-29 09:50:22.945151', NULL, 4, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (32, 'Qui', 'Syble Metz Homenick, Kutch and Quigley elwin@schowalter.net 263-184-3269 5553 Bechtelar Loaf Port Corene DE 13698-7258 Sit vero earum harum. Vel eaque dolores quasi eum. Quo a et. Ut deserunt repudiandae distinctio sint ut id. Ipsum doloribus tenetur. Natus nihil temporibus dolorum minus ipsam id eveniet. Debitis sit cupiditate ipsa sit voluptatem.', '2011-11-29 09:50:22.946746', '2011-11-29 09:50:22.946749', NULL, 5, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (33, 'Et', 'Ms. Rafaela Huels Legros Inc bette@wisokyemmerich.net 1-353-570-8360 5130 Streich Way Lake Rhoda MA 99746 Tempora ipsum a possimus. Sit porro aut nihil voluptas perspiciatis. Omnis nisi ea. Quia omnis tenetur quo labore maiores unde in. Doloribus autem excepturi eligendi id et molestiae. Et eum minima quis repellat neque aut officia. Sit quaerat quia ex quod commodi temporibus. Provident molestiae perferendis maiores est.', '2011-11-29 09:50:22.947834', '2011-11-29 09:50:22.947837', NULL, 5, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (34, 'Accusamus', 'Frieda Wolff Herman-Schinner christy@pfeffereffertz.info 319-849-3274 6139 Gleichner Mission North Pinkborough IL 89005-6261 Incidunt perferendis autem explicabo pariatur itaque ut. Aut beatae ullam. Excepturi et possimus iure et veritatis. Amet modi animi vitae itaque dolorum molestias laborum. Cum dolore quo occaecati non. Sint ut animi voluptatem aliquid unde cum. Pariatur nulla qui quia porro autem deserunt similique.', '2011-11-29 09:50:22.949152', '2011-11-29 09:50:22.949163', NULL, 5, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (35, 'Qui', 'Marie Dietrich Fritsch Group johnnie.kuhlman@bednar.com 579-404-0931 x3463 423 Simonis Lock Lake Keshaun IL 40461 Veniam dolor est reiciendis quis vitae sint. Ea quisquam necessitatibus culpa eum ducimus. At modi nam aut est et. Quia reiciendis sed qui consequatur voluptas hic. Inventore magnam doloremque dolor non ad. At consequatur ipsam et excepturi. Dolores dicta eum laudantium iusto eaque quas quis. Aliquam et occaecati deserunt incidunt.', '2011-11-29 09:50:22.950741', '2011-11-29 09:50:22.950774', NULL, 5, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (36, 'Omnis', 'Maggie Kreiger Tromp Inc anita.quitzon@larsonbogisich.org 999.797.9357 36320 Walker Cliff East Ed FM 99608-4521 Pariatur dicta assumenda. Ut consequatur minima repudiandae magnam laboriosam repellendus nemo. Iste vel quaerat modi. Expedita ut molestiae et ipsa cumque tempore. Magni blanditiis repudiandae deleniti voluptas. Minus harum dicta enim dolor.', '2011-11-29 09:50:22.952454', '2011-11-29 09:50:22.952476', NULL, 5, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (37, 'Ea', 'Pierre Turcotte Nikolaus-Howe abel_keeling@torphyrolfson.net 431.320.4415 x83030 880 Cremin Street Port Meagan NM 54864 Numquam ad reiciendis et. Eos laboriosam sunt quia enim tempore voluptatum soluta. Nesciunt adipisci voluptate cumque consectetur a molestiae. Id qui est omnis non consequuntur itaque dignissimos. Quos aspernatur fuga quo. Et eos perspiciatis tenetur illo nisi molestiae iure. Ratione dolorem voluptatibus hic quam molestiae officiis eius. Voluptatem ab saepe.', '2011-11-29 09:50:22.953642', '2011-11-29 09:50:22.953646', NULL, 5, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (38, 'Officiis', 'Marlon Leannon Friesen, Schroeder and Schmeler abigayle@wolffjenkins.com 300-614-2431 7666 Schamberger Lock Lake Scarlettfort MT 11039 Facilis non aut ab corporis adipisci harum dolor. Eum fugiat nemo et sunt nulla eum facilis. Est aperiam velit facilis itaque ea eos. Architecto mollitia quibusdam sed est. Quis culpa tenetur nam. Harum quia expedita ea cupiditate officia occaecati. Vitae aut aut praesentium et totam.', '2011-11-29 09:50:22.955153', '2011-11-29 09:50:22.955156', NULL, 5, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (39, 'Qui', 'Alex Bins Beer-Carroll maxine_langworth@kerluke.net 1-958-798-8785 x8893 48060 Boris Islands Verlatown IN 13152 Fugiat omnis qui accusantium iste quod enim. Illum molestiae ipsum omnis sed dolores totam. Ducimus debitis recusandae laboriosam iusto. Ipsa voluptate porro quos id consequatur nostrum. Molestiae qui id sit quia praesentium ducimus. Laboriosam nisi sapiente accusamus magni totam id.', '2011-11-29 09:50:22.956636', '2011-11-29 09:50:22.956640', NULL, 5, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (40, 'Quas', 'Cierra McKenzie Robel Inc dusty_boyer@streich.biz 1-653-241-0932 x2731 918 Kohler Spur Schaeferstad IL 60080-1157 Odit exercitationem cumque ea asperiores magnam ex qui. Sed dignissimos molestias voluptatem repellat qui. Culpa et iusto. Tempore incidunt inventore accusamus odit quia. Repellendus explicabo facilis expedita. Cupiditate eos ex doloremque itaque.', '2011-11-29 09:50:22.958013', '2011-11-29 09:50:22.958017', NULL, 5, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (41, 'Aut', 'Shanny Cole Russel, Schneider and Hilll jolie_mante@gleichner.com (518)128-7563 263 Cecil Terrace Lake Tyresebury AR 19188-2011 Autem et et consequatur. Eum nihil ratione est optio. Aut dolore nobis sint omnis. Non accusantium illum ea officia repudiandae. Officia magni soluta qui. Et dolor et.', '2011-11-29 09:50:22.959392', '2011-11-29 09:50:22.959396', NULL, 5, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (42, 'Fuga', 'Ralph Lynch Champlin-Ernser jeffrey.rice@kubbernier.name 1-724-744-8907 74178 Bryana Summit Nicholasville GA 89755-2164 Voluptas repellendus alias ut placeat. Autem ab beatae aut optio officiis dolorem cum. Quia incidunt quas veniam dolorum. Ut vero exercitationem recusandae iste. Vel deleniti et velit nemo quasi tempora. Eius aperiam numquam nemo magnam. Eaque sed doloribus placeat vel. Fuga culpa eos.', '2011-11-29 09:50:22.961316', '2011-11-29 09:50:22.961344', NULL, 6, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (43, 'Minus', 'Madonna Schmidt DDS Boyer-Gerhold burnice@trompschumm.biz 622-786-7546 337 Irma Drive Chadtown VT 32422 Maxime sed at pariatur dolores cum. Quisquam fuga est dolorem consequuntur molestiae. Eius qui quis molestias. Inventore commodi numquam quis illum exercitationem. Nihil possimus aliquam consequuntur consequatur minus. Dolorem veritatis nisi doloribus.', '2011-11-29 09:50:22.962930', '2011-11-29 09:50:22.962945', NULL, 6, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (44, 'Quibusdam', 'Lilian Lehner MD Weissnat, Kemmer and Ankunding serenity@jewebraun.com 379.479.3563 494 Christophe Common Langworthland AS 94278-8717 A nihil voluptas blanditiis. Est aperiam magni provident aliquid et unde. Illum recusandae eum. Ut quod numquam omnis. Unde esse magnam. Fugit laudantium cum consectetur repellendus dolor neque in. Aut non soluta et est.', '2011-11-29 09:50:22.964464', '2011-11-29 09:50:22.964468', NULL, 6, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (45, 'Non', 'Muriel Rolfson Satterfield Inc mozell.weber@white.biz 527-466-6515 x4823 567 Hodkiewicz Fort Lizethland WI 98226 Exercitationem nostrum aliquam nam quis animi rem. Ut sed id labore qui. Accusantium nihil et amet molestias. Aut beatae ut vel qui. Culpa quam aut at. Aut aliquam autem dicta quibusdam.', '2011-11-29 09:50:22.965693', '2011-11-29 09:50:22.965696', NULL, 6, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (46, 'Accusamus', 'Deangelo Feil Mante, Legros and Wilkinson glenna@lynch.biz (154)428-8374 x537 130 Corwin Hills North Berniecehaven NV 58024 Itaque ut voluptate molestiae sed est aut. Nulla aperiam autem. Reprehenderit deleniti vel tempora quis dolor enim hic. Commodi omnis non sunt ex rem voluptas iure. Voluptatem dolor facilis. Eum voluptatem exercitationem qui qui veniam et. Dolorem odit voluptatem dolores. Quasi et sunt dolore eum.', '2011-11-29 09:50:22.967130', '2011-11-29 09:50:22.967134', NULL, 6, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (47, 'Animi', 'Myra Muller Douglas Group asha@bahringer.biz 414.974.4945 x950 67403 Humberto Loop Volkmanshire WI 46312-3807 Et pariatur voluptatem ut. Dolorum earum officiis porro. Dolores id quasi enim saepe. Ut et dolor et et. Ut aut quia eligendi sunt deserunt occaecati. Deleniti labore alias vitae ut iusto corporis amet. Earum harum eum. Aut et modi libero cum est sint.', '2011-11-29 09:50:22.968710', '2011-11-29 09:50:22.968713', NULL, 6, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (48, 'Culpa', 'Eldora Baumbach Quitzon, Buckridge and Kemmer crystel.huel@waterszieme.info 713-999-8615 6260 Gibson Dam Lake Retha NV 50913 Neque laborum explicabo nam ut mollitia dolorem qui. Quasi consequatur totam. Nihil est quo. Est qui deserunt sed repellat dolore dolores quo. Porro occaecati sit. Dolore soluta exercitationem id. Vel et dolorem.', '2011-11-29 09:50:22.970486', '2011-11-29 09:50:22.970507', NULL, 6, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (49, 'Quo', 'Dr. Benjamin Borer Fadel Inc howard@steuber.org 938-509-0861 9991 Jeramie Forks Spencerport NV 11327 Ratione sed ut sit similique. Amet iste ipsum. Iusto odio est in aut. Nihil nesciunt illum temporibus corrupti minima. Sit et esse asperiores culpa hic. Id error possimus in magnam sit. Sunt eos dolores. Voluptas ut omnis.', '2011-11-29 09:50:22.971806', '2011-11-29 09:50:22.971809', NULL, 6, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (50, 'Expedita', 'Patience Robel V Hegmann-Nikolaus elmore_dickinson@terry.name (198)505-8382 x17782 1777 Dillon Freeway Evelynville FL 96740-2728 Doloribus velit facere et harum occaecati enim. Sunt voluptates distinctio culpa tempora eum esse aspernatur. Aut corrupti sit ea tempora. Eligendi ipsa voluptatum facere et tempora qui. Animi dolorem quis. Inventore quo ut facere amet maxime. Repellendus est ad quo.', '2011-11-29 09:50:22.973368', '2011-11-29 09:50:22.973412', NULL, 6, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (51, 'Accusamus', 'Berenice Jones Dietrich, Conn and Stokes aliya@dubuque.com 668.389.7440 x13944 207 Boyer Valley Deloresville CO 25350 Consectetur iure est labore itaque. Ut repudiandae sed aut sint. Quia aliquid voluptatem eligendi. Et optio voluptatibus ut accusamus nisi sunt. Recusandae quaerat qui non. Rerum voluptatem et aspernatur. Nisi distinctio tempore quas eos quaerat.', '2011-11-29 09:50:22.975225', '2011-11-29 09:50:22.975255', NULL, 6, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (52, 'Similique', 'Wiley Cummings Murray, Monahan and Barton ozella.connelly@schoen.net (398)620-7343 x380 164 Jaeden Gateway South Aldenview ME 28185 Minima neque officiis. Similique sit aliquam nihil nostrum itaque. Consequatur et eos asperiores sed id exercitationem. Ipsa expedita voluptatem illo ipsum tempore iusto. Recusandae iure doloremque ut. Similique ut eius iure sapiente repudiandae.', '2011-11-29 09:50:22.976948', '2011-11-29 09:50:22.976951', NULL, 7, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (53, 'Qui', 'Gerald Schoen Jr. O''Reilly, Upton and Vandervort carlos_ferry@toy.info (767)456-2172 679 Bartoletti Radial Norrisview MH 24881 Voluptates et sit. Doloribus est rerum et rerum possimus quam voluptas. Aut rerum sapiente quo. Beatae fugiat in cupiditate. Accusantium est nemo quidem fugiat atque. Eius quod nemo perspiciatis velit at tenetur.', '2011-11-29 09:50:22.978178', '2011-11-29 09:50:22.978182', NULL, 7, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (54, 'Quidem', 'Claudie Funk Zulauf Inc kieran.jakubowski@wilkinson.biz 1-444-299-7776 548 Rosina Prairie Franeckitown WI 22265 Rerum aliquam autem. Sit cupiditate eos sint quae dolore quisquam aut. Laboriosam molestias adipisci. Esse id quidem. Doloribus sint corporis magni. Dicta neque et corrupti. Amet natus distinctio voluptatibus ex numquam.', '2011-11-29 09:50:22.979728', '2011-11-29 09:50:22.979732', NULL, 7, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (55, 'Iste', 'Delores McLaughlin Bednar-Kshlerin kian_graham@bechtelarstamm.net (399)412-7523 x9692 1084 Theodore Knolls North Corene PW 24552-4178 Officiis commodi nesciunt delectus iusto illo voluptatem. Numquam laborum occaecati tenetur nisi eum. Dolore ut libero sequi dolor est. Molestiae non dolor qui tempore eaque non. Ea blanditiis laborum eum cum mollitia quisquam. Eos praesentium deserunt aut illo cum dicta. Saepe est consequatur et.', '2011-11-29 09:50:22.981141', '2011-11-29 09:50:22.981246', NULL, 7, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (56, 'Facere', 'Mr. Reyna Hilll Ritchie, Crooks and Schuppe lucious.wyman@rowecronin.name 340.617.0368 994 Abshire Cape Desmondburgh MA 68872-0320 Natus dolores in. Aut quos aut. Quia dignissimos est sunt velit voluptas autem nemo. Dolorum est velit veniam quos. Omnis qui reprehenderit fuga id. Rem ut consequatur tempora. Sunt tempore ex nemo. Aut fugiat vel eveniet sint est nisi iusto.', '2011-11-29 09:50:22.982817', '2011-11-29 09:50:22.982820', NULL, 7, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (57, 'Sed', 'Darius Dach Rolfson-Altenwerth ettie@dubuque.net (886)701-5214 156 Eva Orchard Port Deven VI 97699-2739 Explicabo et dolores eos vitae similique amet. Voluptatibus mollitia enim nostrum recusandae qui ut qui. Enim voluptatem autem sed inventore et. Sit rerum in ea natus quam placeat. Quod accusantium sit provident et quam. Hic voluptatem nisi. In consectetur enim tempore.', '2011-11-29 09:50:22.984464', '2011-11-29 09:50:22.984468', NULL, 7, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (58, 'Qui', 'Herta Leuschke II Lubowitz-Kreiger anastasia@kirlin.com 1-949-948-3249 x4149 799 Annetta Plains Reillystad UT 96068-6713 Quibusdam aut unde minima et et molestiae officia. Sequi quos necessitatibus natus similique cupiditate dolorem. Est ex vel aut id sed cupiditate qui. Et magnam maxime. Ipsum velit consequatur magnam officiis odio. Repellendus quae quia sapiente autem dignissimos eos. Sed dolore ipsum.', '2011-11-29 09:50:22.986005', '2011-11-29 09:50:22.986008', NULL, 7, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (59, 'Atque', 'Ransom Heathcote Runolfsdottir-Lueilwitz sydni.beier@champlinfadel.biz 667.420.8272 x3205 27437 Zack Valley Lake Lauriemouth OH 35275 Dicta earum labore sapiente. Unde alias quibusdam nam quas fugit velit. Quas cum quo. Cumque ut molestiae et cum a exercitationem laborum. Culpa aut et eius. Sint neque modi. Fuga repellat earum. Veritatis voluptates corrupti.', '2011-11-29 09:50:22.987519', '2011-11-29 09:50:22.987523', NULL, 7, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (60, 'Atque', 'Kylee Wuckert DVM Pollich-Donnelly rosario@hirthe.biz 183.582.9084 x340 2215 Gutmann Squares Hagenesport RI 58792-8751 Asperiores in aliquam. Sint ut expedita dolores corrupti nemo totam distinctio. Est fugiat neque. Eveniet nihil molestiae dolores quisquam error. Laudantium aliquam enim voluptatibus optio quis ipsa. Qui eaque maxime omnis deserunt dolor laboriosam. Id blanditiis doloribus aliquid. Id eveniet consequatur dolores.', '2011-11-29 09:50:22.989077', '2011-11-29 09:50:22.989081', NULL, 7, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (61, 'Voluptas', 'Mrs. Chelsie Prosacco Haag Group doris@vandervort.com 1-926-083-0872 x2295 165 Tate Summit Ashleymouth VI 40920-4518 Excepturi occaecati et consequatur. Est delectus a rerum ipsam in eligendi repellendus. Odit dolores qui esse sit amet qui ipsa. Minima enim eos reprehenderit commodi. Doloribus quia voluptatem dolores atque. Qui optio eum eius beatae. Aliquid voluptas molestiae quidem iure rerum. Enim placeat et rerum voluptatum architecto qui assumenda.', '2011-11-29 09:50:22.990651', '2011-11-29 09:50:22.990654', NULL, 7, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (62, 'Odio', 'Reilly Hamill Marks-Rau nyah_brakus@schuster.com 237.743.4609 x31843 1522 Schneider Estate Lake Jacinto VI 42047-0335 Minima dolores est. Consequatur quisquam et quidem impedit in sint. Quas ipsa unde nemo et. Adipisci harum quibusdam id id distinctio. Aut voluptas sapiente molestiae aut est officia. Quo minima explicabo aut iure est fugit.', '2011-11-29 09:50:22.992655', '2011-11-29 09:50:22.992670', NULL, 8, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (63, 'Enim', 'Rowan Bartoletti Jr. Rolfson-Swift roma@moorelowe.name (129)782-4053 529 Wilhelmine Expressway North Garrytown CA 76221-4266 Omnis dolorum non. Nisi est quasi. Vero dignissimos consectetur cumque magni eaque. Omnis molestiae natus eum reprehenderit dolorem esse. Odio dolorem aut quibusdam. Possimus sit dolor. Tempora expedita doloribus ipsum. Occaecati ut assumenda nulla impedit et.', '2011-11-29 09:50:22.993920', '2011-11-29 09:50:22.993923', NULL, 8, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (64, 'Accusantium', 'Brayan Lockman Paucek Inc kara_trantow@rohan.info 929-096-2090 x912 937 Fanny Unions Reynoldsview VI 20229 Similique reprehenderit quam aut magnam cumque dolores. Ut perferendis labore dolores magnam quia maxime. Voluptate suscipit ex. Beatae necessitatibus alias. Vero aspernatur in qui ut sapiente perferendis. Totam molestiae enim quo. Voluptatem quos autem repellat aperiam est. Sunt eos est ut harum.', '2011-11-29 09:50:22.995523', '2011-11-29 09:50:22.995526', NULL, 8, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (65, 'Quisquam', 'Toni Little Bruen LLC helene@blandaschimmel.name 1-530-656-3929 x491 4540 Cremin Meadows Crooksside CT 72388-2934 Magni delectus non quibusdam enim. Cumque voluptatibus ab enim cum accusantium officia. Odio inventore libero. Quis similique voluptas. Temporibus rerum soluta. Ab molestiae repellat mollitia nesciunt qui. Voluptas sed molestiae. Beatae cumque alias.', '2011-11-29 09:50:22.997049', '2011-11-29 09:50:22.997052', NULL, 8, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (66, 'Eos', 'Miss Dennis Green Cassin Group triston@cremin.biz 878.207.5839 5740 Hirthe Station Port Myrtis PW 41244 Facere nihil optio rem earum praesentium et. Qui dicta est quo. Omnis iste sit occaecati. Facilis architecto voluptatum consectetur. Beatae animi omnis quam sit accusantium. Modi magni voluptatem adipisci et rerum magnam non.', '2011-11-29 09:50:22.998598', '2011-11-29 09:50:22.998601', NULL, 8, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (67, 'Sint', 'Mr. Marguerite Quitzon Medhurst, Medhurst and Greenfelder winona@hand.net (127)343-4166 568 Powlowski Dale North Garfieldbury FM 23079-0612 Accusamus ipsa exercitationem. Deleniti ut minima et adipisci non. Quia tempora autem eos hic suscipit. Pariatur nesciunt distinctio error aliquam velit dolorem. Nihil molestias odit neque suscipit odio. Suscipit magnam dolorum quibusdam voluptas sit. Ut nulla eius minus laudantium. Aliquid ea quo voluptatem consectetur voluptatem in.', '2011-11-29 09:50:23.000091', '2011-11-29 09:50:23.000095', NULL, 8, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (68, 'Et', 'Phoebe Mills Cormier Group joy.okon@schamberger.org 966-913-1152 x87942 503 Medhurst Ford Bertrandport OK 30865 Voluptatem expedita repellendus. Voluptatibus veniam saepe delectus non eos. Omnis voluptas eligendi itaque. Beatae tempora aut cum error delectus. Sequi id eos officia quia consequatur a aut. Ut vitae repellendus nihil.', '2011-11-29 09:50:23.001693', '2011-11-29 09:50:23.001697', NULL, 8, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (69, 'Quia', 'Dr. Sienna Johns Schowalter LLC gage.abernathy@westwelch.org 1-488-662-6751 x413 438 Olson Station Callieville HI 45518-4897 Distinctio nihil quibusdam ullam unde. Molestiae sapiente non. Impedit quia dolore at veniam. Enim minus quod pariatur sapiente. Libero qui corporis iste dignissimos nesciunt velit soluta. Labore laborum atque harum. Ut nulla quisquam dicta corporis nihil. Sunt ut sapiente.', '2011-11-29 09:50:23.003332', '2011-11-29 09:50:23.003336', NULL, 8, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (70, 'Illo', 'Ms. Christine Gutmann Feest-Gottlieb estefania@bartellsimonis.name 410-091-2049 x86384 21841 Reichert Spur East Allan MH 24459 Dolor qui veniam ea. Quos repellendus dolores fugit. Suscipit et aut ut quasi maxime. Eum esse quo reiciendis labore quibusdam. Suscipit aut minima officiis. Dolorum aut perferendis magnam non quae. Quo et non error.', '2011-11-29 09:50:23.004921', '2011-11-29 09:50:23.004921', NULL, 8, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (71, 'Ullam', 'Asa Bashirian Torp and Sons zella_bechtelar@kuhic.net 1-412-757-3469 x8999 94902 Lind Lodge New Sheila TX 24362 Odio aperiam expedita et voluptatem. Saepe quibusdam nihil quo molestias. Unde aut voluptas sit. Amet est mollitia a accusantium voluptas ratione porro. Dolorem ullam et porro deserunt quisquam esse cumque. Placeat explicabo ipsa ipsum iure. Et et delectus saepe. Excepturi voluptates consequuntur voluptate veritatis expedita in at.', '2011-11-29 09:50:23.006471', '2011-11-29 09:50:23.006474', NULL, 8, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (72, 'Voluptas', 'Miss Liliane Hahn Homenick Group prince@breitenbergstiedemann.org 1-454-555-1088 x135 1965 Bailey Brooks Leuschketon IA 71365 Blanditiis quo suscipit et sapiente aspernatur commodi maiores. Illum dolore aspernatur molestiae. Ea nisi adipisci amet autem. Minima nemo rem et veritatis perspiciatis mollitia. Exercitationem alias quam quis. Vitae eum sed incidunt aut est explicabo. Voluptatem sit dicta et. Excepturi quia blanditiis dolore repellendus sed.', '2011-11-29 09:50:23.007780', '2011-11-29 09:50:23.007783', NULL, 9, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (73, 'Mollitia', 'Omer Marquardt Runolfsdottir-Brekke camilla@blick.info 433.452.0199 x709 210 Era Brooks Ezekielburgh NY 82229 Ex beatae est. Qui quod sed culpa animi. Odio voluptatum ut officiis inventore et. Aut vel excepturi est inventore. Illum eveniet laudantium vitae. Saepe incidunt et nostrum. Vero iusto quod est deleniti id nihil impedit. Optio possimus suscipit magnam.', '2011-11-29 09:50:23.010336', '2011-11-29 09:50:23.010349', NULL, 9, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (74, 'Assumenda', 'Mr. Dalton Carter Fisher, Hauck and Kreiger myles_osinski@schowalter.com 458-924-6418 x2946 478 Ruecker Burg New Brennon AL 94736-0309 Laudantium fuga corrupti quaerat dolor. Tempora impedit autem. Odit quia sunt tempora. Sed provident et quasi assumenda aut non. Fugiat eligendi consequatur laborum explicabo est quasi illum. Ea ea voluptatem iure ut voluptas impedit. Pariatur error beatae voluptatem. Ipsum ut eligendi voluptatum dolorum saepe et dicta.', '2011-11-29 09:50:23.011984', '2011-11-29 09:50:23.011991', NULL, 9, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (75, 'Et', 'Mrs. Caesar Batz Cummerata, Schroeder and Wintheiser gaetano.doyle@koelpin.name 1-430-227-5906 x467 79411 Reilly Mission Lake Angelomouth AA 58402-4151 Et doloribus id et sint. Reprehenderit quia qui explicabo quidem vitae aut qui. Voluptatem perferendis qui eligendi numquam et inventore. Asperiores commodi itaque dolore. Dolores rerum doloribus consectetur sed. Ut impedit perspiciatis delectus velit rerum.', '2011-11-29 09:50:23.013288', '2011-11-29 09:50:23.013292', NULL, 9, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (76, 'Accusantium', 'Lukas Raynor Wilkinson-Davis dion_murray@rolfsonmayert.name 430-690-3607 7629 O''Conner Squares South Lenore MT 10491 Sint sit voluptates deleniti sapiente. Inventore rerum sint libero illo tenetur nostrum quasi. Accusantium sunt sit et qui ut. Et animi minima quasi et laboriosam laborum. Fugit odio et dignissimos in. Inventore suscipit ea vitae eum.', '2011-11-29 09:50:23.014907', '2011-11-29 09:50:23.014910', NULL, 9, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (77, 'Nobis', 'Leonie Deckow Strosin, McGlynn and Stamm jorge_parisian@schmittkonopelski.biz 776-093-6286 x587 253 Shanahan Spurs East Kamron AE 77863-9146 Molestiae non officia nemo. Quia hic quis a ut. Quia blanditiis aut. Non dolore veniam. Ut inventore qui id voluptates fugiat expedita exercitationem. Voluptas animi laborum id nostrum. Possimus ea ipsam. Quo alias perferendis incidunt sed officiis.', '2011-11-29 09:50:23.016445', '2011-11-29 09:50:23.016448', NULL, 9, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (78, 'Natus', 'Miss Tatyana Schmidt Farrell, Ruecker and Koelpin garnet@purdyterry.name 538.163.5050 391 Ilene Pike East Meganefurt KS 55432 Enim voluptatibus omnis consequatur. Nihil laborum nulla aliquid. Dolor vitae enim eligendi totam aut. Tempore quo sapiente dolor voluptatem. Aut atque doloremque architecto. Omnis quia occaecati ex. Quas veniam voluptatibus cum nesciunt atque. Sint maxime quidem modi sed voluptas excepturi nostrum.', '2011-11-29 09:50:23.018593', '2011-11-29 09:50:23.018616', NULL, 9, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (79, 'Minus', 'Adah Collier Stokes, Hammes and Nader nikko@shieldswilderman.name 1-461-374-0363 1835 Katheryn Crossroad Willburgh PW 27758 Minus officia qui et. Fuga sequi voluptas eum maiores. Sit molestiae occaecati est ullam aspernatur est nesciunt. Dicta sint qui eum quia. Magni et est accusantium fugit. Architecto est eum dolorem delectus placeat nostrum magni. Necessitatibus minima magnam optio possimus. Rerum voluptatem dolor.', '2011-11-29 09:50:23.020522', '2011-11-29 09:50:23.020536', NULL, 9, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (80, 'Ea', 'Christina Baumbach Hickle, Altenwerth and Purdy miracle_grimes@vonschumm.info (379)873-1098 x454 7558 Weber Oval Swiftburgh SC 80013-2161 Labore dicta sed nobis ut aut voluptate. Voluptatibus nisi dolores ratione distinctio et magnam voluptas. Repudiandae cum sint. Assumenda rem doloremque ipsam modi. Pariatur minima enim cumque. Iusto officiis placeat quam soluta.', '2011-11-29 09:50:23.022111', '2011-11-29 09:50:23.022114', NULL, 9, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (81, 'Perspiciatis', 'Miss Bria Prosacco Fisher Group rey_oberbrunner@oconnell.info (896)621-2435 x0896 28281 Johnson Lodge Lake Rudyside LA 24942-9975 Nam nemo ut ut reiciendis consectetur. Autem ratione qui et omnis quas nam odit. Dolores cum reiciendis ducimus omnis qui. Ratione laborum sint molestiae. Non amet dolore nostrum. Explicabo earum natus molestias aspernatur consequatur hic. Ut id aperiam velit dignissimos voluptatem vitae enim.', '2011-11-29 09:50:23.023154', '2011-11-29 09:50:23.023157', NULL, 9, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (82, 'Soluta', 'Kathryn Morar Hilll, Corwin and Wuckert adelbert_wunsch@jacobi.com 186-960-8295 4497 Annamae Forks South Kaitlynmouth ND 28426 Quam aut doloremque illum quaerat rem. Provident sit ex vel deserunt asperiores dignissimos. Iste ea pariatur. Minima tempore similique voluptatum dignissimos saepe. Voluptas suscipit natus eligendi sint sed eveniet aut. Similique aut hic.', '2011-11-29 09:50:23.024898', '2011-11-29 09:50:23.024901', NULL, 10, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (83, 'Eaque', 'Billie McDermott PhD Kovacek, Schulist and Bosco jose_mann@boehm.org 560-080-8304 x098 35176 Lebsack Isle West Tre KS 14184 Quo voluptatem beatae quaerat aliquid. Voluptatem nihil aperiam vel modi harum ullam. Nisi exercitationem praesentium. Iusto dolorum cum error inventore maiores. Quia aut consequatur. Qui debitis ducimus sapiente. Laudantium odio ex corrupti.', '2011-11-29 09:50:23.026477', '2011-11-29 09:50:23.026480', NULL, 10, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (84, 'Harum', 'Georgianna Glover Collier-Jacobson laurel_stanton@hackett.net (141)512-0935 x0592 7996 Lou Village South Brett VA 88165 Dolorem quaerat quas. Dolorum assumenda aliquam molestias sit ut sed quae. Praesentium reiciendis et dignissimos sed. Rerum perferendis sequi expedita iusto voluptates. Ut tempora iste esse neque excepturi at. Vel qui soluta sint fuga dolorem. Possimus qui ipsa eum explicabo nulla.', '2011-11-29 09:50:23.028100', '2011-11-29 09:50:23.028103', NULL, 10, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (85, 'Voluptas', 'Oral Beier Bayer and Sons bernardo.hermann@thompsonvon.org (543)079-2301 4932 Isaac Port West Leoramouth MD 76990 Doloribus sint est et quia sapiente quis iste. Illo ut omnis dicta dolorem delectus esse vel. Amet harum quo. Praesentium vero animi facere dolore vel blanditiis vel. Sequi architecto ut officia laboriosam. Nihil ut doloribus sunt optio neque et.', '2011-11-29 09:50:23.029630', '2011-11-29 09:50:23.029633', NULL, 10, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (86, 'Aut', 'Santino Beier V Champlin-Walter nora.kozey@hilllmayert.name 884.602.5368 43970 Schuppe Fall Greenfurt CO 34639 Delectus in eum error in officiis quo cum. Est a sed pariatur ipsam totam. Et praesentium placeat rerum a minima distinctio. Itaque sit at unde eveniet. Alias beatae numquam. Odit eos velit sint sit. Voluptatum repellendus maiores optio unde magni necessitatibus distinctio.', '2011-11-29 09:50:23.031192', '2011-11-29 09:50:23.031195', NULL, 10, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (87, 'Ut', 'Skyla Rogahn Marvin-Rau sister@corkery.name 653-800-3210 x7510 2566 Lorenzo Harbors Maeganstad PA 78913 Non beatae nihil est voluptates ratione quae. Occaecati corrupti at. Atque quo nam numquam quidem nemo repellendus. Error quia atque et quibusdam et adipisci. Porro saepe blanditiis est quidem. Maxime inventore consectetur autem laudantium fugit cumque mollitia. Quam recusandae fuga.', '2011-11-29 09:50:23.032775', '2011-11-29 09:50:23.032779', NULL, 10, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (88, 'Ea', 'Patsy Hirthe Koch-Bins eliane@macejkovic.name 585.756.6588 x6543 4448 Ruecker Gardens Lake Wilfordton AR 11708 Ea omnis dolorum at iste enim. Tempore doloribus id aut illo deleniti deserunt. Est exercitationem aut fuga incidunt. Est quia voluptas sunt. Cum rem occaecati tempore perferendis perspiciatis. Quos minus accusantium officia. Ut nihil consequatur maiores.', '2011-11-29 09:50:23.035004', '2011-11-29 09:50:23.035017', NULL, 10, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (89, 'Non', 'Valentine Bogan Hilpert, Carroll and Thiel buck@renner.name (235)809-4321 3003 Ewald Turnpike New Avismouth KY 53396-9904 Ut id fugit nisi sed. Quas itaque consequatur voluptatum error dolores explicabo. Cupiditate sed qui aut et. Officiis est quam est. Porro labore molestiae fugiat assumenda vitae dolor. Est totam quidem. Quis sint et velit.', '2011-11-29 09:50:23.036623', '2011-11-29 09:50:23.036626', NULL, 10, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (90, 'Incidunt', 'Dr. Derek Lynch Denesik Group cleta_gleichner@wunschfay.name 412.021.4870 99031 Ted Shore Darbyberg MA 63351 Assumenda ratione possimus. Odio non aut eveniet. Aut sint sunt consectetur. Rerum quisquam et soluta. Quisquam saepe dolores rerum nostrum ducimus veritatis. Temporibus ut sit sapiente. Consectetur aspernatur mollitia sequi. Possimus amet aut nihil nemo sequi accusantium et.', '2011-11-29 09:50:23.037702', '2011-11-29 09:50:23.037706', NULL, 10, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (91, 'Velit', 'Wilhelmine Hermann Lockman, Lowe and Hilpert shanon.muller@jewe.com 888-358-1767 8782 Olson Prairie Coleland WY 76788-2222 Itaque rem in ullam atque eligendi ipsum aut. Nemo minus beatae placeat non. Fugit et culpa distinctio dolores id architecto. Temporibus at id blanditiis reiciendis ipsum et est. Quia dolorem et omnis molestiae aut. Itaque et nulla vitae.', '2011-11-29 09:50:23.039354', '2011-11-29 09:50:23.039357', NULL, 10, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (92, 'Sunt', 'Aubree Bins Hills, Miller and Gusikowski janice@schoen.org (763)172-9565 866 Frieda Dam Jasonland AK 13048 Nam sint expedita. Aut velit numquam aut esse omnis soluta. Perspiciatis magni eius et. Inventore omnis et assumenda magni sequi eligendi. Numquam doloribus ipsam sed placeat aut. Vero ut blanditiis doloremque reprehenderit ex. Est nobis officiis.', '2011-11-29 09:50:23.040959', '2011-11-29 09:50:23.040961', NULL, 11, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (93, 'Maiores', 'Khalid Pollich Reichert, Welch and Mosciski cleta@zboncakhamill.org 824-454-2589 8094 Theo Plain Port Maddison AZ 47465 Facere consectetur autem ad in ipsum quisquam. Quis officia quibusdam voluptatem minus magni. Dolores excepturi ipsum. Atque magni sapiente amet numquam vel. Voluptas ut ex minus omnis dolor. Porro expedita qui deserunt at labore est voluptatibus.', '2011-11-29 09:50:23.042364', '2011-11-29 09:50:23.042367', NULL, 11, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (94, 'Quos', 'Ms. Ricardo Quitzon Kilback Group kayla_luettgen@osinski.com 1-993-887-6625 45676 Rowe Crossroad West Nelsonhaven NV 94023-8638 Qui iure nihil. Voluptas natus quaerat quod doloremque molestiae. Porro eum unde sunt dolore. Nobis quidem occaecati aut alias eos minima. Nemo hic est. Voluptatibus eligendi omnis recusandae quia debitis. Magni sapiente expedita ea dolorem et et ut. Corporis ut ea in minima quidem.', '2011-11-29 09:50:23.044269', '2011-11-29 09:50:23.044300', NULL, 11, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (95, 'Et', 'Marcellus Steuber Muller-Senger lynn@dietrich.org 1-904-605-4051 x268 44166 Kayleigh Streets Cronaton MT 67289 Et ut aperiam eum et ullam. Qui dolores odio vitae. Ut eveniet veniam cumque expedita sint. Ut vel et et rerum. Laborum dolores rem ad et. Autem eum vel exercitationem est autem neque. Alias suscipit rerum neque et mollitia. Cupiditate iusto nobis molestiae odio culpa id.', '2011-11-29 09:50:23.046222', '2011-11-29 09:50:23.046242', NULL, 11, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (96, 'Sunt', 'Miss Antonio Conroy Bartell Group sabina@mertz.com (867)674-3313 x33958 756 Gibson Ford North Daisha CO 73407 Excepturi molestiae voluptatum. Quos sint consequatur quo eum. Officiis amet repudiandae ea cupiditate iure temporibus. Corrupti voluptatem et maiores numquam tenetur. Molestiae in sapiente et. Consequatur rem aut. Earum tempora debitis beatae ad dolorem blanditiis sint. Ipsam consequatur aliquam.', '2011-11-29 09:50:23.047994', '2011-11-29 09:50:23.048009', NULL, 11, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (97, 'Qui', 'Leonie Robel Heller LLC clint@veummills.biz 312.006.5120 x10686 58005 Barton Ridges Gaylordberg NC 80333 Corporis maiores magni. Assumenda saepe a at quam. Sequi quia veniam id eius et iste ipsam. Laudantium vel amet labore nesciunt voluptates ut. Explicabo maiores voluptatem temporibus cupiditate laboriosam consequatur. Qui sint accusantium non similique sint repudiandae enim. Consectetur sapiente aperiam ex.', '2011-11-29 09:50:23.049593', '2011-11-29 09:50:23.049597', NULL, 11, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (98, 'Incidunt', 'Alivia Reichel Gibson, Cruickshank and Anderson lavinia@murray.info 799-685-5545 x8320 88746 Wehner Throughway South Darian NE 53862-1956 Rerum expedita voluptates consequatur et sit. Eaque corporis aut. Incidunt nostrum iste molestias voluptas. Laborum fuga dignissimos sint et corporis. Sed aut in quia et voluptatibus. Reiciendis aliquid eum maiores. Aut ipsa eveniet distinctio repellendus. Porro id nemo ad.', '2011-11-29 09:50:23.051044', '2011-11-29 09:50:23.051048', NULL, 11, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (99, 'Rerum', 'Miss Dereck Skiles Ryan and Sons cierra@pagac.info (438)649-6046 212 Doyle Terrace West Gretchen GU 68543 Maxime dolor dolorem dolores consequuntur aspernatur. Ullam aut accusamus nisi temporibus voluptatibus. Eos sunt commodi placeat est. Ut aut sunt et ad ut dolor culpa. Id eos beatae ea quos cumque. Eos dolor perspiciatis. Id sunt deserunt.', '2011-11-29 09:50:23.052342', '2011-11-29 09:50:23.052342', NULL, 11, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (100, 'Iste', 'Mr. Althea Zulauf Smith-Fisher louie_jacobson@kaulke.biz 1-592-440-3484 x977 747 Bode Crossroad North Melody NM 15824 Velit ex reprehenderit fugit occaecati tempore neque ut. Exercitationem nulla voluptatem. Cupiditate assumenda ex rerum sunt libero. Dolorum ea ut. Temporibus dolorum eum est adipisci. Quia sint perspiciatis animi nihil alias.', '2011-11-29 09:50:23.053497', '2011-11-29 09:50:23.053500', NULL, 11, 1, NULL, NULL, NULL, NULL);INSERT INTO "posts" ("id", "title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES (101, 'Quia', 'Annie Kozey Cummerata-Kutch rodger@goodwinwitting.info 715.025.3900 x876 6959 Evalyn Drive Bradfordview KY 70939 Totam sint dolore nesciunt dolorem. Voluptatibus inventore magnam eos. Itaque laudantium veritatis. Dolores quisquam qui pariatur. Nostrum et provident. Consequatur doloribus dolor fuga labore.', '2011-11-29 09:50:23.055397', '2011-11-29 09:50:23.055417', NULL, 11, 1, NULL, NULL, NULL, NULL)[0m
 
 
-Started POST "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:02:40 +0800
-  Processing by PostsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "post"=>{"title"=>"Post01", "content"=>"Ruby on Rails Self Studyfffffff"}, "commit"=>"Create Post", "board_id"=>"1"}
-  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.4ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mAREL (0.4ms)[0m  INSERT INTO "posts" ("title", "content", "created_at", "updated_at", "bord_id", "board_id", "user_id", "excerpt_image_file_name", "excerpt_image_content_type", "excerpt_image_file_size", "excerpt_image_updated_at") VALUES ('Post01', 'Ruby on Rails Self Studyfffffff', '2011-11-29 08:02:40.752639', '2011-11-29 08:02:40.752639', NULL, 1, 1, NULL, NULL, NULL, NULL)
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mAREL (0.2ms)[0m  UPDATE "boards" SET "posts_count" = COALESCE("posts_count", 0) + 1 WHERE "boards"."id" = 1
-[paperclip] Saving attachments.
-Redirected to http://forum-demo/boards/1/posts/8
-Completed 302 Found in 370ms
-
-
-Started GET "/boards/1/posts/8" for 192.168.8.128 at 2011-11-29 16:02:41 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"8"}
-  [1m[36mBoard Load (0.4ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (3.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 8 AND ("posts".board_id = 1) LIMIT 1
-  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (2.0ms)
-Rendered posts/show.html.erb within layouts/application (80.3ms)
-Completed 200 OK in 168ms (Views: 85.3ms | ActiveRecord: 5.0ms)
-
-
-Started GET "/excerpt_images/medium/missing.png" for 192.168.8.128 at 2011-11-29 16:02:41 +0800
-
-ActionController::RoutingError (No route matches "/excerpt_images/medium/missing.png"):
-  
-
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
-
-
-Started GET "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:02:43 +0800
-  Processing by PostsController#index as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 18ms
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 16:02:43 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[35mBoard Load (0.2ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (4.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0[0m
-  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 1)
-  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Started GET "/" for 192.168.12.116 at 2011-11-29 17:50:36 +0800
+  Processing by BoardsController#index as HTML
+  [1m[36mBoard Load (2.8ms)[0m  [1mSELECT "boards".* FROM "boards"[0m
 Rendered common/_user_nav.erb (1.6ms)
-Rendered boards/show.html.erb within layouts/application (141.8ms)
-Completed 200 OK in 178ms (Views: 141.3ms | ActiveRecord: 7.7ms)
+Rendered boards/index.html.erb within layouts/application (81.0ms)
+Completed 200 OK in 95ms (Views: 86.0ms | ActiveRecord: 2.8ms)
 
 
-Started GET "/boards/1?page=2" for 192.168.8.128 at 2011-11-29 16:05:50 +0800
+Started GET "/boards/2" for 192.168.12.116 at 2011-11-29 17:50:41 +0800
   Processing by BoardsController#show as HTML
-  Parameters: {"page"=>"2", "id"=>"1"}
-  [1m[36mBoard Load (0.4ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (1.1ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 5
-  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Parameters: {"id"=>"2"}
+  [1m[35mBoard Load (0.4ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 2 LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 2)[0m
+  [1m[35mPost Load (6.5ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 2) ORDER BY updated_at DESC LIMIT 5 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 2)[0m
 Rendered common/_user_nav.erb (1.5ms)
-Rendered boards/show.html.erb within layouts/application (136.7ms)
-Completed 200 OK in 212ms (Views: 140.8ms | ActiveRecord: 2.2ms)
+Rendered boards/show.html.erb within layouts/application (104.6ms)
+Completed 200 OK in 138ms (Views: 102.8ms | ActiveRecord: 7.4ms)
 
 
-Started GET "/boards/1/posts/1" for 192.168.8.128 at 2011-11-29 16:05:54 +0800
+Started GET "/boards/2/posts/11" for 192.168.12.116 at 2011-11-29 17:50:45 +0800
   Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"1"}
-  [1m[36mBoard Load (0.4ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 AND ("posts".board_id = 1) LIMIT 1
-  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (1.4ms)
-Rendered posts/show.html.erb within layouts/application (131.7ms)
-Completed 200 OK in 178ms (Views: 137.4ms | ActiveRecord: 2.3ms)
+  Parameters: {"board_id"=>"2", "id"=>"11"}
+  [1m[35mBoard Load (0.4ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 2 LIMIT 1
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 11 AND ("posts".board_id = 2) LIMIT 1[0m
+Rendered common/_user_nav.erb (1.3ms)
+Rendered posts/show.html.erb within layouts/application (85.2ms)
+Completed 200 OK in 127ms (Views: 90.4ms | ActiveRecord: 1.7ms)
 
 
-Started GET "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:06:55 +0800
-  Processing by PostsController#index as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 20ms
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 16:06:55 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[35mBoard Load (0.3ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (4.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0[0m
-  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 1)
-  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (1.1ms)
-Rendered boards/show.html.erb within layouts/application (140.4ms)
-Completed 200 OK in 218ms (Views: 141.1ms | ActiveRecord: 5.7ms)
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 16:10:10 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (4.6ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0
-  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 1)[0m
-  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.4ms)
-Rendered boards/show.html.erb within layouts/application (143.2ms)
-Completed 200 OK in 180ms (Views: 143.4ms | ActiveRecord: 6.1ms)
-
-
-Started GET "/boards/1?page=2" for 192.168.8.128 at 2011-11-29 16:10:14 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"page"=>"2", "id"=>"1"}
-  [1m[35mBoard Load (0.3ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (1.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 5[0m
-  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.4ms)
-Rendered boards/show.html.erb within layouts/application (125.8ms)
-Completed 200 OK in 163ms (Views: 131.6ms | ActiveRecord: 2.7ms)
-
-
-Started GET "/boards/1?page=1" for 192.168.8.128 at 2011-11-29 16:10:18 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"page"=>"1", "id"=>"1"}
-  [1m[35mBoard Load (0.3ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (4.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0[0m
-  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 1)
-  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (1.8ms)
-Rendered boards/show.html.erb within layouts/application (143.1ms)
-Completed 200 OK in 181ms (Views: 142.2ms | ActiveRecord: 7.4ms)
-
-
-Started GET "/boards/1/posts/8" for 192.168.8.128 at 2011-11-29 16:10:38 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"8"}
-  [1m[36mBoard Load (0.3ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (1.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 8 AND ("posts".board_id = 1) LIMIT 1
-  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (1.4ms)
-Rendered posts/show.html.erb within layouts/application (128.9ms)
-Completed 200 OK in 219ms (Views: 133.2ms | ActiveRecord: 2.9ms)
-
-
-Started GET "/excerpt_images/medium/missing.png" for 192.168.8.128 at 2011-11-29 16:10:39 +0800
+Started GET "/excerpt_images/medium/missing.png" for 192.168.12.116 at 2011-11-29 17:50:46 +0800
 
 ActionController::RoutingError (No route matches "/excerpt_images/medium/missing.png"):
   
@@ -903,170 +170,64 @@ ActionController::RoutingError (No route matches "/excerpt_images/medium/missing
 Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
 
 
-Started GET "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:10:41 +0800
+Started GET "/boards/2/posts" for 192.168.12.116 at 2011-11-29 17:50:57 +0800
   Processing by PostsController#index as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[36mBoard Load (0.4ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 21ms
+  Parameters: {"board_id"=>"2"}
+  [1m[35mBoard Load (0.5ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 2 LIMIT 1
+Redirected to http://192.168.12.147/boards/2
+Completed 302 Found in 19ms
 
 
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 16:10:41 +0800
+Started GET "/boards/2" for 192.168.12.116 at 2011-11-29 17:50:58 +0800
   Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[35mBoard Load (0.2ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (46.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0[0m
-  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 1)
-  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (2.4ms)
-Rendered boards/show.html.erb within layouts/application (151.4ms)
-Completed 200 OK in 188ms (Views: 109.8ms | ActiveRecord: 47.9ms)
+  Parameters: {"id"=>"2"}
+  [1m[36mBoard Load (0.4ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 2 LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 2)
+  [1m[36mPost Load (6.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".board_id = 2) ORDER BY updated_at DESC LIMIT 5 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 2)
+Rendered common/_user_nav.erb (1.3ms)
+Rendered boards/show.html.erb within layouts/application (102.3ms)
+Completed 200 OK in 137ms (Views: 100.3ms | ActiveRecord: 8.0ms)
 
 
-Started GET "/boards/1/posts/8" for 192.168.8.128 at 2011-11-29 16:10:43 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"8"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (1.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 8 AND ("posts".board_id = 1) LIMIT 1
-  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-Rendered common/_user_nav.erb (2.1ms)
-Rendered posts/show.html.erb within layouts/application (117.6ms)
-Completed 200 OK in 164ms (Views: 122.4ms | ActiveRecord: 2.5ms)
+Started GET "/users/sign_in" for 192.168.12.116 at 2011-11-29 17:51:03 +0800
+  Processing by Devise::SessionsController#new as HTML
+Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/devise-1.5.1/app/views/devise/shared/_links.erb (2.2ms)
+Rendered common/_user_nav.erb (2.5ms)
+Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/devise-1.5.1/app/views/devise/sessions/new.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 100ms (Views: 22.7ms | ActiveRecord: 0.5ms)
 
 
-Started GET "/excerpt_images/medium/missing.png" for 192.168.8.128 at 2011-11-29 16:10:43 +0800
+Started POST "/users/sign_in" for 192.168.12.116 at 2011-11-29 17:51:59 +0800
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Obz9HDktKFVpMTvoQrq+db3gd89xMsa3pN+Udtn7LnQ=", "user"=>{"email"=>"admin@example.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@example.org' LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2011-11-29 09:51:59.851611', "current_sign_in_at" = '2011-11-29 09:51:59.851611', "last_sign_in_ip" = '192.168.12.116', "current_sign_in_ip" = '192.168.12.116', "sign_in_count" = 1, "updated_at" = '2011-11-29 09:51:59.852367' WHERE "users"."id" = 1
+Redirected to http://192.168.12.147/
+Completed 302 Found in 368ms
 
-ActionController::RoutingError (No route matches "/excerpt_images/medium/missing.png"):
+
+Started GET "/" for 192.168.12.116 at 2011-11-29 17:52:00 +0800
+  Processing by BoardsController#index as HTML
+  [1m[36mBoard Load (43.8ms)[0m  [1mSELECT "boards".* FROM "boards"[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered common/_user_nav.erb (1.6ms)
+Rendered boards/index.html.erb within layouts/application (73.3ms)
+Completed 200 OK in 130ms (Views: 79.2ms | ActiveRecord: 44.6ms)
+
+
+Started GET "/admin/boards" for 192.168.12.116 at 2011-11-29 17:52:06 +0800
+  Processing by Admin::BoardsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBoard Load (2.2ms)[0m  SELECT "boards".* FROM "boards"
+Rendered common/_user_nav.erb (1.5ms)
+Rendered admin/boards/index.html.erb within layouts/admin (30.6ms)
+Completed 200 OK in 151ms (Views: 56.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/boards/new" for 192.168.12.116 at 2011-11-29 17:52:10 +0800
+
+AbstractController::ActionNotFound (The action 'new' could not be found for BoardsController):
   
 
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
-
-
-Started GET "/boards/1/posts/8/edit" for 192.168.8.128 at 2011-11-29 16:10:44 +0800
-  Processing by PostsController#edit as HTML
-  Parameters: {"board_id"=>"1", "id"=>"8"}
-  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mBoard Load (2.6ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 8 AND ("posts".user_id = 1) LIMIT 1[0m
-Rendered posts/_form.html.erb (5.1ms)
-Rendered common/_user_nav.erb (2.1ms)
-Rendered posts/edit.html.erb within layouts/application (43.5ms)
-Completed 200 OK in 166ms (Views: 50.0ms | ActiveRecord: 4.4ms)
-
-
-Started POST "/boards/1/posts/8" for 192.168.8.128 at 2011-11-29 16:10:50 +0800
-  Processing by PostsController#update as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tGZQcIeDdLI0Z8nFLo9/FjwNHrUx0GCgW2wa8F0dw1g=", "post"=>{"title"=>"Post01", "content"=>"Ruby on Rails Self Studyfffffff", "excerpt_image"=>#<ActionDispatch::Http::UploadedFile:0xb068dd4 @original_filename="Penguins.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[excerpt_image]\"; filename=\"Penguins.jpg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/tmp/RackMultipart20111129-1288-16poefk>>}, "commit"=>"Update Post", "board_id"=>"1", "id"=>"8"}
-  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (1.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 8 AND ("posts".user_id = 1) LIMIT 1
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1wbltk3.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1wbltk3.jpg[0]' -resize "300x300>" '/tmp/stream20111129-1288-1wbltk320111129-1288-ekhjvm'
-[32mCommand[0m :: identify -format %wx%h '/tmp/stream20111129-1288-1wbltk3.jpg[0]'
-[32mCommand[0m :: convert '/tmp/stream20111129-1288-1wbltk3.jpg[0]' -resize "100x100>" '/tmp/stream20111129-1288-1wbltk320111129-1288-8uskx6'
-  [1m[36mAREL (0.8ms)[0m  [1mUPDATE "posts" SET "excerpt_image_file_name" = 'Penguins.jpg', "excerpt_image_content_type" = 'image/jpeg', "excerpt_image_file_size" = 777835, "excerpt_image_updated_at" = '2011-11-29 08:10:50.659475', "updated_at" = '2011-11-29 08:10:51.294245' WHERE "posts"."id" = 8[0m
-[paperclip] Saving attachments.
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/8/original/Penguins.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/8/medium/Penguins.jpg
-[paperclip] saving /home/rizn/rails/forum-demo/public/system/excerpt_images/8/thumb/Penguins.jpg
-Redirected to http://forum-demo/boards/1/posts/8
-Completed 302 Found in 1382ms
-
-
-Started GET "/boards/1/posts/8" for 192.168.8.128 at 2011-11-29 16:10:51 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"8"}
-  [1m[35mBoard Load (0.3ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 8 AND ("posts".board_id = 1) LIMIT 1[0m
-  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.4ms)
-Rendered posts/show.html.erb within layouts/application (116.9ms)
-Completed 200 OK in 206ms (Views: 121.0ms | ActiveRecord: 2.3ms)
-
-
-Started GET "/boards/1/posts" for 192.168.8.128 at 2011-11-29 16:10:55 +0800
-  Processing by PostsController#index as HTML
-  Parameters: {"board_id"=>"1"}
-  [1m[35mBoard Load (0.2ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-Redirected to http://forum-demo/boards/1
-Completed 302 Found in 21ms
-
-
-Started GET "/boards/1" for 192.168.8.128 at 2011-11-29 16:10:55 +0800
-  Processing by BoardsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mBoard Load (0.2ms)[0m  [1mSELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1[0m
-  [1m[35mPost Load (3.2ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".board_id = 1) ORDER BY updated_at DESC LIMIT 5 OFFSET 0
-  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE ("posts".board_id = 1)[0m
-  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.6ms)
-Rendered boards/show.html.erb within layouts/application (149.6ms)
-Completed 200 OK in 186ms (Views: 151.4ms | ActiveRecord: 8.1ms)
-
-
-Started GET "/boards/1/posts/8" for 192.168.8.128 at 2011-11-29 16:10:58 +0800
-  Processing by PostsController#show as HTML
-  Parameters: {"board_id"=>"1", "id"=>"8"}
-  [1m[35mBoard Load (0.3ms)[0m  SELECT "boards".* FROM "boards" WHERE "boards"."id" = 1 LIMIT 1
-  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 8 AND ("posts".board_id = 1) LIMIT 1[0m
-  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
-Rendered common/_user_nav.erb (1.8ms)
-Rendered posts/show.html.erb within layouts/application (118.3ms)
-Completed 200 OK in 207ms (Views: 123.1ms | ActiveRecord: 2.2ms)
-
-
-Started GET "/admin/boards/1/posts/8/edit" for 192.168.8.128 at 2011-11-29 16:18:24 +0800
-  Processing by Admin::PostsController#edit as HTML
-  Parameters: {"board_id"=>"1", "id"=>"8"}
-  [1m[35mUser Load (1.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mPost Load (2.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 8 LIMIT 1[0m
-Rendered admin/posts/edit.html.erb within layouts/admin (55.8ms)
-Completed 500 Internal Server Error in 176ms
-
-ActionView::Template::Error (No route matches {:action=>"show", :controller=>"admin/posts", :board_id=>nil, :id=>#<Post id: 8, title: "Post01", content: "Ruby on Rails Self Studyfffffff", created_at: "2011-11-29 08:02:40", updated_at: "2011-11-29 08:10:51", bord_id: nil, board_id: 1, user_id: 1, excerpt_image_file_name: "Penguins.jpg", excerpt_image_content_type: "image/jpeg", excerpt_image_file_size: 777835, excerpt_image_updated_at: "2011-11-29 08:10:50">}):
-    1: <h1>Editing post</h1>
-    2: 
-    3: <%= form_for @post, :url => admin_board_post_path(@board,@post) do |f| %>
-    4: <%= render :partial => 'form', :locals => { :f => f } %>
-    5: <% end %>
-    6: <%= link_to 'Show', board_post_path(@board,@post) %> |
-  app/views/admin/posts/edit.html.erb:3:in `_app_views_admin_posts_edit_html_erb__409596628_93431450_633507702'
-
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.1ms)
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.9ms)
-
-
-Started GET "/admin/boards/1/posts/8/edit" for 192.168.8.128 at 2011-11-29 16:18:46 +0800
-  Processing by Admin::PostsController#edit as HTML
-  Parameters: {"board_id"=>"1", "id"=>"8"}
-  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
-  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 8 LIMIT 1[0m
-Rendered admin/posts/edit.html.erb within layouts/admin (19.5ms)
-Completed 500 Internal Server Error in 81ms
-
-ActionView::Template::Error (No route matches {:action=>"show", :controller=>"admin/posts", :board_id=>nil, :id=>#<Post id: 8, title: "Post01", content: "Ruby on Rails Self Studyfffffff", created_at: "2011-11-29 08:02:40", updated_at: "2011-11-29 08:10:51", bord_id: nil, board_id: 1, user_id: 1, excerpt_image_file_name: "Penguins.jpg", excerpt_image_content_type: "image/jpeg", excerpt_image_file_size: 777835, excerpt_image_updated_at: "2011-11-29 08:10:50">}):
-    1: <h1>Editing post</h1>
-    2: 
-    3: <%= form_for @post, :url => admin_board_post_path(@board,@post) do |f| %>
-    4: <%= render :partial => 'form', :locals => { :f => f } %>
-    5: <% end %>
-    6: <%= link_to 'Show', board_post_path(@board,@post) %> |
-  app/views/admin/posts/edit.html.erb:3:in `_app_views_admin_posts_edit_html_erb__409596628_87358120_633507702'
-
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
-Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.8ms)
+Rendered /home/rizn/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.10/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (1.0ms)
