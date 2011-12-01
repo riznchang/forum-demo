@@ -1,0 +1,5 @@
+log/
+tmp/
+db/production.sqlite3
+db/test.sqlite3
+db/development.sqlite3

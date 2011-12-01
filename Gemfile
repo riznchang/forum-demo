@@ -7,6 +7,9 @@ gem "will_paginate"
 gem "paperclip"
 gem "populator"
 gem "faker"
+gem "capistrano"
+gem "capistrano-ext"
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
