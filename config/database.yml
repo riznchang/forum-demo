@@ -22,5 +22,5 @@ production:
   database: forumdemo_production
   pool: 5
   username: root
-  password: '151478'
+  password: ''
   socket: /var/run/mysqld/mysqld.sock
